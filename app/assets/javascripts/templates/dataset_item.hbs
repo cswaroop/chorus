@@ -1,6 +1,15 @@
 {{#ifAll hasCredentials viewable}}
     <a class="image" href="{{url}}">
-        {{#if stale}} <img class='stale_dataset_icon' src="/images/invalid_dataset_icon.png"/> {{/if}}
+        {{#if stale}}
+<!--             <img class='stale_dataset_icon' src="/images/invalid_dataset.png"/>  -->
+<!--             <i class="fa fa-times stale_dataset_marker"></i> -->
+<span class="fa-stack stale_dataset_marker">
+  <i class="fa fa-times fa-stack-1x"></i>
+  <i class="fa fa-circle-o fa-stack-2x"></i>
+</span>
+
+        {{/if}}
+
         <img src="{{iconUrl}}" title="{{humanizedDatasetType this}}"/>
     </a>
 {{else}}

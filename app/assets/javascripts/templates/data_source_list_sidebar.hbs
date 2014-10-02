@@ -17,11 +17,17 @@
         {{else}}
             <div class="individual_account">
                 {{#if userHasAccount}}
-                    <img src="/images/data_sources/access.png"/>
-                    {{t "data_sources.sidebar.access"}}
+                    <div class="datasource_access_panel has_access">
+                    <div class="panelcontent">
+                        <i class="fa fa-unlock"></i> {{t "data_sources.sidebar.access"}}
+                    </div>
+                     </div>
                 {{else}}
-                    <img src="/images/data_sources/no_access.png"/>
-                    {{t "data_sources.sidebar.no_access"}}
+                    <div class="datasource_access_panel no_access">
+                    <div class="panelcontent">
+                        <i class="fa fa-lock"></i> {{t "data_sources.sidebar.no_access"}}
+                    </div>
+                    </div>
                 {{/if}}
             </div>
         {{/if}}

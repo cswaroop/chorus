@@ -111,21 +111,25 @@ $list-item-height: 39px;
             border-right: $border-canon;
 
             li {
-                img.checkmark {
-                    position: absolute;
-                    bottom: 0px;
-                    right: 0px;
+                .checkmark {
                     display: none;
+                    position: absolute;
+                    top: 17px;
+                    right: -2px;
+                    font-size: 10px;
+                    color: #77CC33;
                 }
 
                 &.added {
                     img.checkmark {
                         display: inherit;
                     }
+                    .checkmark {
+                        display: inherit;
+                    }
                     a {
                         display : none;
                     }
-
                     .was_added {
                         display : inline;
                     }

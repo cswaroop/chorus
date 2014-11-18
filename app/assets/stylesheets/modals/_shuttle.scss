@@ -121,26 +121,23 @@ $shuttle-list-item-height: 40px;
                 }
 
                 &.added {
-                    img.checkmark {
-                        display: inherit;
-                    }
                     .checkmark {
                         display: inherit;
                     }
                     a {
-                        display : none;
+                        display: none;
                     }
                     .was_added {
-                        display : inline;
+                        display: inline;
                     }
                 }
 
                 a {
-                    display : inline;
+                    display: inline;
                 }
 
                 .was_added {
-                    display : none;
+                    display: none;
                 }
             }
         }
@@ -161,4 +158,3 @@ $shuttle-list-item-height: 40px;
 .dialog.workspace_edit_members .dialog_content .form_controls {
      margin-top: 0px;
 }
-

@@ -1,4 +1,4 @@
-$list-item-height: 39px;
+$shuttle-list-item-height: 40px;
 
 .shuttle_widget {
     background-color: $body-background-color;
@@ -52,7 +52,7 @@ $list-item-height: 39px;
 
     .shuttle_body {
         position: relative;
-        height: (($list-item-height + $default-border-width) * 8);
+        height: (($shuttle-list-item-height + $default-border-width) * 8);
     }
 
     a {
@@ -78,8 +78,8 @@ $list-item-height: 39px;
     div.image {
         position: relative;
         display: inline-block;
-        width: $list-item-height - 6px;
-        height: $list-item-height - 10px;
+        width: $shuttle-list-item-height - 6px;
+        height: $shuttle-list-item-height - 10px;
     }
 
     ul {
@@ -91,10 +91,10 @@ $list-item-height: 39px;
         overflow-y: auto;
 
         li {
-            height: $list-item-height;
+            height: $shuttle-list-item-height;
             border-bottom: $border-canon;
             padding: 0 8px;
-            line-height: $list-item-height - 3px;
+            line-height: $shuttle-list-item-height - 3px;
 
             .name {
                 @include font-normal-alpha;

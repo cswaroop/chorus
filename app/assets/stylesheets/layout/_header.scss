@@ -175,15 +175,22 @@ $notification-token-width: $header-margin * 2;
                 color: $brand-light;
                 z-index: 1;
 
-                &.search_clear { font-size: 14px; }
-                &.magnifying_glass {
-                    position: absolute;
-                    left: 168px;
-                    top: 16px;
-                    font-size: 16px;
-                }
-            }
+                &.search_clear { font-size: 10px; }
+/*                 &.magnifying_glass { */
+/*                     position: absolute; */
+/*                     left: 168px; */
+/*                     top: 16px; */
+/*                     font-size: 15px; */
+/*                 } */
 
+            }
+            .search_magnifying_glass:before {
+                z-index: 1;
+                color: $brand-light;
+                font-size: 15px;
+                top: 4px;
+            }
+            
             input {
                 @include placeholder {
                     color: $brand-tint;

@@ -224,7 +224,7 @@ window.Chorus = function chorus$Global() {
             self.addClearButton(el);
         });
     };
-
+    
     self.addClearButton = function(input) {
         if ($(input).parent().is(".chorus_search_container")) return;
 
@@ -240,9 +240,16 @@ window.Chorus = function chorus$Global() {
         $input.unbind("textchange.clear_link").bind("textchange.clear_link", function() {
             clearLink.toggleClass("hidden", $input.val().length === 0);
         });
+
+// also add the content for magnifying glass in search field
+// glyph = <i class='oi magnifying_glass' data-glyph='magnifying-glass' />
+//      var magGlass = "<span class='oi magnifying_glass' data-glyph='magnifying-glass' />";
+        var magGlass = "<span class='search_magnifying_glass'></span>";
+
         var container = $("<div class='chorus_search_container'></div>");
-        container.css({ display: $input.css("display") });
+//         container.css({ display: $input.css("display") });
         container.insertAfter($input);
+        container.prepend(magGlass);
         container.append($input).append(clearLink);
     };
 

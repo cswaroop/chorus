@@ -226,14 +226,15 @@ window.Chorus = function chorus$Global() {
     };
 
 
+
 // **************
 // - magnifying glass at beginning of field
 // - clear element at end of field
-
-    self.addSearchFieldModifications = function(input) {
     
 //     self.addClearButton = function(input) {
-// >>>>>>> d5eb969... in progress - working on getting the mag glass to behave
+
+    self.addSearchFieldModifications = function(input) {
+
         if ($(input).parent().is(".chorus_search_container")) return;
 
         var $input = $(input);
@@ -250,7 +251,6 @@ window.Chorus = function chorus$Global() {
         });
 
 
-
 // also add the content for magnifying glass in search field
         var magGlass = "<span class='search_magnifying_glass'></span>";
 
@@ -258,7 +258,6 @@ window.Chorus = function chorus$Global() {
         container.insertAfter($input);
         container.prepend(magGlass);
         container.append($input).append(clearLink);
-
     };
 
     self.hotKeyMeta = BrowserDetect.OS === "Mac" ? "ctrl" : "alt";

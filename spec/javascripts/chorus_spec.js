@@ -508,7 +508,7 @@ describe("chorus global", function() {
             this.input1 = $("<input></input>");
             this.container = $("<div></div>").append(this.input1);
 
-            chorus.addClearButton(this.input1);
+            chorus.addSearchFieldModifications(this.input1);
             this.clearLink = this.container.find("a.chorus_search_clear");
         });
 

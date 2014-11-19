@@ -221,11 +221,14 @@ window.Chorus = function chorus$Global() {
         input.unbind("textchange.filter").bind("textchange.filter", textChangeFunction);
         input.addClass("chorus_search");
         input.each(function(i, el) {
-            self.addClearButton(el);
+            self.addSearchFieldModifications(el);
         });
     };
-    
-    self.addClearButton = function(input) {
+
+// add more to the search fields
+// - magnifying glass at beginning of field
+// - clear element at end of field
+    self.addSearchFieldModifications = function(input) {
         if ($(input).parent().is(".chorus_search_container")) return;
 
         var $input = $(input);

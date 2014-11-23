@@ -112,18 +112,20 @@ ul.schema_menu {
     max-height: 300px;
 
     li {
-        margin: 2px 4px 0px 8px;
+/*         margin: 2px 4px 0px 8px; */
 
         .check {
-            background-repeat: no-repeat;
-            background-image: url("/images/check.png");
+        	width: 20px;
+/*             background-repeat: no-repeat; */
+/*             background-image: url("/images/check.png"); */
             display: inline-block;
-            width: 10px;
-            height: 10px;
-            margin-right: 2px;
-            margin-left: -14px;
+/*             width: 10px; */
+/*             height: 10px; */
+/*             margin-right: 5px; */
+            /* margin-left: -14px; */
             position: relative;
-            top: 1px;
+            top: 2px;
+			font-size: 14px;
 
             &.hidden {
                 visibility: hidden;

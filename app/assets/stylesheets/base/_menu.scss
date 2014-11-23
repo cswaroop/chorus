@@ -26,12 +26,13 @@
     }
 
     .check {
-        background-repeat: no-repeat;
-        background-image: url("/images/check.png");
+/*         background-repeat: no-repeat; */
+/*         background-image: url("/images/check.png"); */
+
         display: inline-block;
         visibility: hidden;
-        width: 10px;
-        height: 10px;
+/*         width: 10px; */
+/*         height: 10px; */
 /*         margin-left: -14px; */
         position: relative;
         top: 1px;

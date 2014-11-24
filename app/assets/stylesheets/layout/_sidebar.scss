@@ -130,9 +130,10 @@ body .ui-draggable-dragging {
 
                 a {
                     @include ellipsis;
-                    @include menu-triangle;
                     max-width: 140px;
                     color: $link-color;
+                    
+                    @include menu-triangle-glyph;
                 }
             }
 

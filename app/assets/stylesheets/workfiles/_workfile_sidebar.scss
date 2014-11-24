@@ -38,15 +38,9 @@
 
     .version_list {
         font-size: 12px;
-        margin-left: 3px;
-        span {
-            color : $link-color;
-            color: $link-color;
-        }
 
-        img {
-           margin: 2px;
-        }
+        span { /* color: $link-color; */ }
+
     }
 }
 

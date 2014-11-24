@@ -71,6 +71,17 @@
     }
 }
 
+/* 
+i[class^="icon-"]:before {
+	display: inline-block;
+	text-decoration: none;
+}
+*/
+
+a .chosen {
+	@include menu-triangle-glyph;
+}
+
 .link_menu {
     position: relative;
     z-index : $link-menu-z-index;
@@ -78,9 +89,9 @@
     padding-left: 20px;
 
     a {
-        img {
-           margin: 2px;
-        }
+/*         img { */
+/*            margin: 2px; */
+/*         } */
     }
 
     .popup_filter {

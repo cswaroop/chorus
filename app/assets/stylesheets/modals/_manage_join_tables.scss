@@ -81,7 +81,8 @@
         a {
             font-size: inherit;
             border-bottom: dotted 1px;
-            @include menu-triangle;
+
+			@include menu-triangle-glyph; 
         }
     }
 }

@@ -173,6 +173,8 @@ $help-pill-width: 34px;
 $texteditor-min-height: 300px;
 $default-dialog-width: 500px;
 
+$margin-caret: 5px;		// space between the text and the caret glyph
+
 // z-indices
 $guts-z-index: 0;
 $link-menu-z-index: $guts-z-index + 1;
@@ -521,11 +523,26 @@ $action-bar-secondary-background-color: $light-blue;
 }
 
 @mixin menu-triangle {
-    padding-right: 10px;
-    background-image: url("/images/blue-menu-triangle.png");
-    background-position: right;
-    background-repeat: no-repeat;
+/*     padding-right: 10px; */
+/*     background-image: url("/images/blue-menu-triangle.png"); */
+/*     background-position: right; */
+/*     background-repeat: no-repeat; */
 }
+
+@mixin menu-triangle-glyph {
+	&:hover::after {
+    	text-decoration: none !important;	
+	}
+	&::after {
+		display: inline-block;
+	position: relative;
+	left: $margin-caret;
+	/* color: $link-color; */
+	font-family: FontAwesome;
+    content:"\f0d7";
+	}
+}
+
 
 @mixin triangle($pointing_direction, $color, $width, $height) {
     width: 0;

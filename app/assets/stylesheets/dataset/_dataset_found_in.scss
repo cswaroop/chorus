@@ -15,7 +15,9 @@
   }
 
   .open_other_menu {
-    @include menu-triangle;
+
+    @include menu-triangle-glyph;
+	color: $brand-dark;
   }
 
   .other_menu {

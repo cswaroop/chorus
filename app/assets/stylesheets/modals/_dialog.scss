@@ -18,6 +18,7 @@
             vertical-align: middle;
             margin: 0 $dialog-padding;
             padding-right: 25px;
+            @include ellipsis;
         }
     }
 

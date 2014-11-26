@@ -1,4 +1,5 @@
 @import "_browser_support";
+@import "dashboard";
 
 $text-padding-y: 4px;
 $big-gutter: (2 * $activity-gutter);
@@ -30,22 +31,22 @@ $refresh-activity-gutter: $activity-gutter - 5;
         text-decoration: none;
     }
 
-    .more_items {
-        font-size: 12px;
-        padding: $activity-gutter 0;
-        text-align: center;
-
-        a {
-            display: inline-block;
-            max-width: 50%;
-            width: 100%;
-            @include panel-button(30px);
-        }
-    }
-
     .no_items {
         @include secondary-text-normal;
         padding: 0 $activity-gutter;
+    }
+}
+
+.more_items {
+    font-size: 12px;
+    padding: $padding-top-canon 0 $padding-bottom-canon 0;
+    text-align: center;
+
+    a {
+        display: inline-block;
+        max-width: 50%;
+        width: 100%;
+        @include panel-button(30px);
     }
 }
 
@@ -55,7 +56,7 @@ $refresh-activity-gutter: $activity-gutter - 5;
     }
 
     .activity_item {
-        padding: $refresh-activity-gutter $refresh-activity-gutter $activity-gutter $refresh-activity-gutter;
+        padding: $refresh-activity-gutter $refresh-activity-gutter ($activity-gutter - 3) $refresh-activity-gutter;
         position: relative;
         overflow: visible;
     }
@@ -210,9 +211,9 @@ li .activity_content,
     font-size: 16px;
 }
 
-.activity_list.workspace_detail, 
-.activity_list.dashboard, 
-.recent_comments_list, 
+.activity_list.workspace_detail,
+.dashboard_activity_list.dashboard,
+.recent_comments_list,
 .notification_list {
     .comments {
         margin-left: ($icon-image-width + (2 * $activity-gutter));
@@ -220,7 +221,7 @@ li .activity_content,
 
     li.activity {
         border-bottom: $border-canon;
-
+        
         &.insight {
             background: #FFFFFF;
             border-bottom: $border-canon;

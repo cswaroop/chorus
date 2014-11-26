@@ -84,8 +84,7 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
 /* A dashboard_module             */
 /* widget: recent activity stream */
 
-
-    /*  note: there is additional css for activity list dashboard widget in _activity_list.scss */
+    /* note: there is additional css for activity list dashboard widget in _activity_list.scss */
     
     .dashboard_activity_list {        
         .activity_wrapper {
@@ -104,19 +103,6 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
         a[href=''], a:not([href]) {
             color: $color-text3;
             text-decoration: none;
-        }
-
-        .more_items {
-            font-size: 12px;
-            padding: $padding-top-canon 0 $padding-bottom-canon 0;
-            text-align: center;
-
-            a {
-                display: inline-block;
-                max-width: 50%;
-                width: 100%;
-                @include panel-button(30px);
-            }
         }
     }
 

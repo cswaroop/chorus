@@ -52,11 +52,12 @@ input[type=checkbox] {
     margin: 5px 4px;
 }
 
+/* form: red asterisk for required fields */
 .required:after {
     content: "*";
     color: $error-background-color;
     vertical-align: middle;
-    margin-left: 5px;
+    margin-left: 3px;
 }
 
 .hidden {

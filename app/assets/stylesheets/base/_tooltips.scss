@@ -1,8 +1,12 @@
+@import "_browser_support";
+@import "_common";
+
 @mixin tooltip($text, $bg, $border){
     .ui-tooltip-content {
         color: $text;
         background-color: $bg;
         border-color: $border;
+        border-radius: $default-border-radius;
     }
     .ui-tooltip-titlebar {
         background-color: $bg;
@@ -57,7 +61,8 @@
     @include tooltip($error-text-color, #282828, #282828);
 
     .ui-tooltip-content {
-        font-size: 13px;
+        font-size: 12px;
+        line-height: normal;
         max-width: 350px;
     }
 }
@@ -109,10 +114,22 @@
 }
 
 .more-info {
-  background-image: url('/images/more-info.png');
-  display: inline-block;
-  height: 12px;
-  width: 12px;
+/* 	background-image: url('/images/more-info.png'); */
+/* 	display: inline-block; */
+/* 	height: 12px; */
+/* 	width: 12px; */
+
+	&:hover::after {
+    	text-decoration: none !important;	
+	}
+
+	&::after {
+		display: inline-block;
+		position: relative;
+		left: $caret-margin;
+		font-family: FontAwesome;
+		content: "\f0d7";
+	}
 }
 
 .tooltip-tips {
@@ -138,4 +155,9 @@
     font-size: 14px;
     width: 450px;
   }
+}
+
+/* specific color for the (?) glyph */
+.fa-question-circle {
+	color: #888;
 }

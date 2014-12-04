@@ -19,7 +19,9 @@
             }
         }
 
-        .text-remove, .transition-border, #tag_editor {
+        .text-remove,
+/*         .tag-remove, */
+        .transition-border, #tag_editor {
             display: none;
         }
     }

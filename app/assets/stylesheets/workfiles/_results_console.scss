@@ -45,11 +45,10 @@
                 .spinner {
                   display: inline-block;
                   width: 25px;
-
-                  div[aria-role=progressbar] {
+                }
+                div[aria-role=progressbar] {
                       left: 13px;
                       top: -3px;
-                  }
                 }
 
                 .task_loading {

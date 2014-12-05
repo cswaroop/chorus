@@ -10,7 +10,7 @@ div.login {
 
     background: $login-background;
     height: 100%;
-    
+
     .errors {
         margin-left: auto;
         margin-right: auto;   
@@ -55,26 +55,26 @@ div.login {
                 width: 100%;
                 margin: 0px;
             }
-
-            .logo.alpine {
-                display: block;
-                margin-left: auto;
-                margin-right: auto;
-                margin-bottom: $image-fudge;
-                height: 50px;
-            }
-
-            .logo.pivotal {
-                display: block;
-                margin-left: auto;
-                margin-right: auto;
-                margin-bottom: $image-fudge;
-            }
         }
+
+        .logo.alpine {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: $image-fudge;
+            height: 50px;
+        }
+
+        .logo.pivotal {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: $image-fudge;
+        }
+
     }
 
-    .login_footer {
-        
+    .login_footer {        
         margin-left: auto;
         margin-right: auto;
 

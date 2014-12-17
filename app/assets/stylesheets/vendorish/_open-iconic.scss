@@ -20,8 +20,8 @@ $iconic-font-path: '../fonts/open-iconic/' !default;
 
 .oi[data-glyph] {
   &:before {
-    position: relative;
-    top: 1px;
+/*     position: relative; */
+/*     top: 1px; */
     font-family: 'Icons';
     display: inline-block;
     speak: none;
@@ -67,6 +67,31 @@ $iconic-font-path: '../fonts/open-iconic/' !default;
     transform: scale(-1, -1);
   }
 }
+
+.oi {
+    &.data-glyph {
+
+      &:before {
+        position: relative;
+        font-family: 'Icons';
+        display: inline-block;
+        speak: none;
+        line-height: 1;
+        vertical-align: baseline;
+        font-weight: normal;
+        font-style: normal;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      &:empty:before {
+        width: 1em;
+        text-align: center;
+        box-sizing: content-box;
+      }
+    }
+}
+
 
 .oi[data-glyph=account-login]:before {
   content: '\e000';
@@ -216,10 +241,6 @@ $iconic-font-path: '../fonts/open-iconic/' !default;
   content: '\e024';
 }
 
-.oi[data-glyph=british-pound]:before {
-  content: '\e025';
-}
-
 .oi[data-glyph=browser]:before {
   content: '\e026';
 }
@@ -329,6 +350,9 @@ $iconic-font-path: '../fonts/open-iconic/' !default;
 }
 
 .oi[data-glyph=cog]:before {
+  content: '\e041';
+}
+.oi-cog:before {
   content: '\e041';
 }
 
@@ -551,6 +575,9 @@ $iconic-font-path: '../fonts/open-iconic/' !default;
 .oi[data-glyph=home]:before {
   content: '\e078';
 }
+.oi-home:before {
+  content: '\e078';
+}
 
 .oi[data-glyph=image]:before {
   content: '\e079';
@@ -643,6 +670,9 @@ $iconic-font-path: '../fonts/open-iconic/' !default;
 .oi[data-glyph=magnifying-glass]:before {
   content: '\e08f';
 }
+.oi.magnifying-glass:before {
+  content: '\e08f';
+}
 
 .oi[data-glyph=map-marker]:before {
   content: '\e090';
@@ -725,6 +755,9 @@ $iconic-font-path: '../fonts/open-iconic/' !default;
 }
 
 .oi[data-glyph=people]:before {
+  content: '\e0a4';
+}
+.oi.people:before {
   content: '\e0a4';
 }
 
@@ -863,6 +896,9 @@ $iconic-font-path: '../fonts/open-iconic/' !default;
 .oi[data-glyph=tags]:before {
   content: '\e0c6';
 }
+.oi.tags:before {
+  content: '\e0c6';
+}
 
 .oi[data-glyph=target]:before {
   content: '\e0c7';
@@ -936,20 +972,12 @@ $iconic-font-path: '../fonts/open-iconic/' !default;
   content: '\e0d8';
 }
 
-.oi[data-glyph=wifi]:before {
-  content: '\e0d9';
-}
-
 .oi[data-glyph=wrench]:before {
   content: '\e0da';
 }
 
 .oi[data-glyph=x]:before {
   content: '\e0db';
-}
-
-.oi[data-glyph=yen]:before {
-  content: '\e0dc';
 }
 
 .oi[data-glyph=zoom-in]:before {

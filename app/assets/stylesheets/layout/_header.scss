@@ -79,7 +79,9 @@ $notification-token-width: $header-margin * 2;
         .left {
             float: left;
             #primarymenu {
-            	font-size: 21px;
+            	position: relative;
+            	top: 1px;
+            	width: 16px;
             	opacity: 0.94;
 			}
 

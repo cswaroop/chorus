@@ -443,7 +443,7 @@ describe("chorus.views.Header", function() {
 
         describe("the drawer menu", function() {
             it("has a visible button", function() {
-                expect(this.view.$(".drawer i")).toHaveAttr("data-glyph", "menu");
+                expect(this.view.$(".drawer span")).toHaveId("primary-menu");
             });
 
             it("has a hidden popup menu", function() {

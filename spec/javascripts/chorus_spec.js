@@ -515,7 +515,7 @@ describe("chorus global", function() {
         it("adds a little 'x' to the right of the search input", function() {
             this.input1.val("nit").trigger("textchange");
             expect(this.clearLink).toExist();
-            expect(this.clearLink.find("i").attr("data-glyph")).toBe("x");
+            expect(this.clearLink.find("span").attr("class")).toBe("search_clear");
         });
 
         it("hides the 'x' when the input is blank", function() {

@@ -10,6 +10,7 @@ $header-margin-right: $page-margin-right;
 $expanded-search-width: 450px;
 $notification-token-width: $header-margin * 2;
 
+
 @mixin full-item-link($height) {
     &:hover, &.selected {
         background-color: $list-hover-color;

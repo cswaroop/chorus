@@ -10,10 +10,6 @@ $header-margin-right: $page-margin-right;
 $expanded-search-width: 450px;
 $notification-token-width: $header-margin * 2;
 
-/* .oi[data-glyph=data-source]:before { */
-/*   content: url(../images/data-source-glyph.svg); */
-/* } */
-
 @mixin full-item-link($height) {
     &:hover, &.selected {
         background-color: $list-hover-color;
@@ -78,11 +74,16 @@ $notification-token-width: $header-margin * 2;
 
         .left {
             float: left;
-            #primarymenu {
+            #primary-menu {
             	position: relative;
             	top: 1px;
             	width: 16px;
+            	height: 16px;
             	opacity: 0.94;
+            	
+            	svg {
+            	    fill: #FFF;
+            	}
 			}
 
             .token {
@@ -130,7 +131,7 @@ $notification-token-width: $header-margin * 2;
                 }
 
                 &.active .caret::before {
-                    /* when activating the menu, switch thecaret */
+                    /* when activating the menu, switch the caret */
                     content:  "\f0d8";  // =  fa-caret-up
                 }
 
@@ -265,6 +266,37 @@ $notification-token-width: $header-margin * 2;
                 width: $header-height;
                 text-align: center;
                 &.remainder { height: 100vh; }
+            }
+            
+            /*  color for svg glyphs in the primary nav bar */
+            #primary {
+                svg {
+                    fill: #FFF;
+                }
+            }
+            
+            #primary-home { 
+                @extend #primary;
+                svg {
+                    width: 19px;
+                    height: 20px;
+                }
+            }
+            #primary-workspaces {
+                font-size: 19px;
+            }
+            #primary-data {
+                font-size: 19px;
+            }
+            #primary-users {
+                @extend #primary;
+                svg {
+                    width: 29px;
+                    height: 30px;
+                }
+            }
+            #primary-tags {
+                font-size: 19px;
             }
         }
 

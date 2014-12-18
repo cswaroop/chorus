@@ -68,7 +68,7 @@ $notification-token-width: $header-margin * 2;
 
                 span {
                     display: inline-block;
-                    i {
+                    .caret {
                         margin-left: 5px;
                         color: $caret-color;
                     }
@@ -98,7 +98,6 @@ $notification-token-width: $header-margin * 2;
                     img {
                         max-height: 25px;
                     }
-
                 }
 
                 &.drawer {
@@ -127,16 +126,12 @@ $notification-token-width: $header-margin * 2;
                 float: right;
 
                 .caret {
-                    font-size: 10px;
+                    font-size: 14px;
                 }
 
                 &.active .caret::before {
-                
-                    /* rotate when expanding the menu */
-                    /* & translate the caret's origin (centerpoint) for rotation so that it displays correctly */
-                    /* dimensions are unique to the OI caret glyph */
-                    @include rotateX(180deg);
-                    @include transform-origin (50%, 40%);
+                    /* when activating the menu, switch thecaret */
+                    content:  "\f0d8";  // =  fa-caret-up
                 }
 
                 &.username {

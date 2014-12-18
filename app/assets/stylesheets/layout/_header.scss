@@ -10,9 +10,9 @@ $header-margin-right: $page-margin-right;
 $expanded-search-width: 450px;
 $notification-token-width: $header-margin * 2;
 
-.oi[data-glyph=data-source]:before {
-  content: url(../images/data-source-glyph.svg);
-}
+/* .oi[data-glyph=data-source]:before { */
+/*   content: url(../images/data-source-glyph.svg); */
+/* } */
 
 @mixin full-item-link($height) {
     &:hover, &.selected {

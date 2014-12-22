@@ -275,28 +275,29 @@ $notification-token-width: $header-margin * 2;
                 }
             }
             
+            /* individual sections of the primary nav */
             #primary-home { 
                 @extend #primary;
                 svg {
-                    width: 19px;
-                    height: 20px;
+                    width: 18px;
+                    height: 18px;
                 }
             }
             #primary-workspaces {
-                font-size: 19px;
+                font-size: 18px;
             }
             #primary-data {
-                font-size: 19px;
+                font-size: 18px;
             }
             #primary-users {
                 @extend #primary;
                 svg {
                     width: 29px;
-                    height: 30px;
+                    height: 29px;
                 }
             }
             #primary-tags {
-                font-size: 19px;
+                font-size: 18px;
             }
         }
 

@@ -329,7 +329,7 @@ describe("chorus.views.DatasetItem", function() {
     context("when the dataset is stale", function () {
         it("displays a link with an invalid icon", function () {
             this.dataset.set('stale', true);
-            expect(this.view.$('a.image img.stale_dataset_icon')).toExist();
+            expect(this.view.$('.stale_dataset_marker')).toExist();
         });
     });
 });

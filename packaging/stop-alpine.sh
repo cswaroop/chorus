@@ -7,6 +7,7 @@ bin=`dirname "$bin"`
 bin=`cd "$bin"; pwd`
 
 . "$bin"/chorus-config.sh
+MAX_WAIT_TIME=$1
 
 ALPINE_PID_FILE="$ALPINE_HOME"/alpine.pid
 
@@ -14,7 +15,7 @@ if [ -f $ALPINE_PID_FILE ]; then
   if kill -0 `cat $ALPINE_PID_FILE` > /dev/null 2>&1; then
     log "stopping alpine "
     CATALINA_PID=$ALPINE_PID_FILE $ALPINE_HOME/alpine_control.sh stop >/dev/null
-    wait_for_stop $ALPINE_PID_FILE
+    wait_for_stop_or_force $ALPINE_PID_FILE $MAX_WAIT_TIME
     rm -f $ALPINE_PID_FILE
   else
     log "could not stop alpine. check that process `cat $ALPINE_PID_FILE` exists"

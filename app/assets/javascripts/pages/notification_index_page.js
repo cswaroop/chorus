@@ -1,8 +1,8 @@
 chorus.pages.NotificationIndexPage = chorus.pages.Base.extend({
     constructorName: "NotificationIndexPage",
     crumbs: [
-        { label: t("breadcrumbs.home"), url: "#/" },
-        { label: t("breadcrumbs.notifications") }
+//         { label: t("breadcrumbs.home"), url: "#/" },
+//         { label: t("breadcrumbs.notifications") }
     ],
 
     setup: function() {

@@ -1,4 +1,5 @@
 describe("chorus.views.ProjectCard", function () {
+    // TODO: This isn't done at all.
 
     beforeEach(function () {
         this.workspace = backboneFixtures.workspace();

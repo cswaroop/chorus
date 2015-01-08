@@ -63,12 +63,13 @@ chorus.views.Header = chorus.views.Base.extend({
 
     postRender: function() {
         this.$(".search input").unbind("textchange").bind("textchange", _.bind(_.throttle(this.displayResult, 500), this));
-        chorus.addClearButton(this.$(".search input"));
+        chorus.addSearchFieldModifications(this.$(".search input"));
 
         if (chorus.isDevMode()) {
             this.addFastUserToggle();
         }
         this.modifyTypeAheadSearchLength();
+        this.displayNotificationCount();
     },
 
     addFastUserToggle: function() {
@@ -149,6 +150,7 @@ chorus.views.Header = chorus.views.Base.extend({
     },
 
     togglePopupNotifications: function(e) {
+    	this.notificationList.collection.trigger("reset");
         var beingShown = this.$(".menu.popup_notifications").hasClass("hidden");
 
         chorus.PopupMenu.toggle(this, ".menu.popup_notifications", e, '.messages');
@@ -164,6 +166,13 @@ chorus.views.Header = chorus.views.Base.extend({
         }
     },
 
+	displayNotificationCount: function() {
+// 		function to update the unread notification in the header lozenge
+// 		deferred until postrender so that the header loads faster
+// 		and then updates for the user
+		this.$("a.notifications .lozenge").text(this.unreadNotifications.length);		
+	},
+	
     clearNotificationCount: function() {
         this.$("a.notifications .lozenge").text("0").addClass("empty");
     },

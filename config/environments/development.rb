@@ -9,6 +9,10 @@ Chorus::Application.configure do
   # Log error messages when you accidentally call methods on nil.
   config.whiny_nils = true
 
+  config.log_level = :debug
+
+  config.cache_store = :file_store, Rails.root.to_s + "/tmp/cache/chorus"
+
   # Show full error reports and disable caching
   config.consider_all_requests_local = false
   config.action_controller.perform_caching = false
@@ -25,9 +29,10 @@ Chorus::Application.configure do
 
   # Do not compress assets
   config.assets.compress = false
+#  config.assets.compress = true
 
   # Expands the lines which load the assets
-  config.assets.debug = false
+  config.assets.debug = true 
 
   # Give paperclip path to ImageMagick tools
   Paperclip.options[:command_path] = "/usr/local/bin/"

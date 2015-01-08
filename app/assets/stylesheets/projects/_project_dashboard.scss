@@ -86,7 +86,7 @@ $card-progressbar_zero: rgba(#C0C0C0, 0.5);
 .dashboard_project_list {
     margin-left: -10px;
     
-    .loading_text {
+    .loading_text, .empty_state {
         margin-left: 10px;
     }
 }

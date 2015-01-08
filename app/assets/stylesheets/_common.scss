@@ -229,7 +229,7 @@ $list-horizontal-divider: 1px solid $border-color;
 $list-vertical-divider: 1px solid $border-color;
 $list-selectable-hover-color: rgba(0,0,0,0.1);
 $list-selectable-selected-color: white;
-$list-breadcrumb-divider: "\e02f";
+$list-breadcrumb-divider: "\f0da;"; /* fa-caret-right */
 $list-breadcrumb-spacing: 5px;
 $list-breadcrumb-size: 10px;
 $list-border-color-highlighted: $green;

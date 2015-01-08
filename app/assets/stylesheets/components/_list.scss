@@ -38,8 +38,8 @@ ul li {
         display: inline-block;
         margin-right: $list-breadcrumb-spacing;
 
-        &:after {
-            font-family: Icons;
+        &::after {
+            font-family: "FontAwesome"
             content: $list-breadcrumb-divider;
             margin-left: $list-breadcrumb-spacing;
             font-size: $list-breadcrumb-size;

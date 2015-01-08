@@ -17,21 +17,23 @@ module Hdfs
       self.for_data_source(data_source).version
     end
 
-    def self.accessible?(data_source)
-      self.for_data_source(data_source).java_hdfs.list('/').present?
+    def self.accessible?(data_source, username = '')
+      self.for_data_source(data_source, username).java_hdfs.list('/').present?
     end
 
-    def self.for_data_source(data_source)
-      new(data_source.host, data_source.port, data_source.username, data_source.version, data_source.high_availability?, data_source.hdfs_pairs)
+    def self.for_data_source(data_source, username = '')
+      new(data_source.host, data_source.port, data_source.username, data_source.version, data_source.high_availability?, data_source.hdfs_pairs, data_source.name, username)
     end
 
-    def initialize(host, port, username, version = nil, high_availability = false, connection_parameters = [])
+    def initialize(host, port, username, version = nil, high_availability = false, connection_parameters = [], connection_name = '', chorus_username)
       @host = host
       @port = port.to_s
       @username = username
       @version = version
       @high_availability = high_availability
       @connection_parameters = connection_parameters
+      @connection_name = connection_name
+      @chorus_username = chorus_username
     end
 
     def version
@@ -80,7 +82,7 @@ module Hdfs
     end
 
     def java_hdfs
-      JavaHdfs.new(@host, @port, @username, @version, @high_availability, @connection_parameters)
+      JavaHdfs.new(@host, @port, @username, @version, @connection_name, @chorus_username, @high_availability, @connection_parameters)
     end
 
     private

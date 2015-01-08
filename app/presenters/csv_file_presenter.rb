@@ -13,13 +13,21 @@ class CsvFilePresenter < Presenter
   end
 
   def contents
-    i = 0
-    result = []
-    CSV.foreach(model.contents.path) do |row|
-      break if i > 99
-      result << row.to_csv
-      i = i + 1
+
+    begin
+      result = []
+      CSV.foreach(model.contents.path, :col_sep=>",") do |row|
+        break if result.length > 99
+        result << row.to_csv
+      end
+    rescue CSV::MalformedCSVError => e
+      result = []
+      File.open(model.contents.path).each do |row|
+        break if result.length > 99
+        result << row
+      end
     end
+
     result
   end
 

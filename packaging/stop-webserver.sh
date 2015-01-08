@@ -8,6 +8,8 @@ bin=`cd "$bin"; pwd`
 
 . "$bin"/chorus-config.sh
 
+MAX_WAIT_TIME=$1
+
 if [ -f $NGINX_PID_FILE ]; then
   if kill -0 `cat $NGINX_PID_FILE` > /dev/null 2>&1; then
     log_inline "stopping nginx "
@@ -15,7 +17,7 @@ if [ -f $NGINX_PID_FILE ]; then
     OPENSSL_CONF=$OPENSSL_CONF ./$NGINX -s stop
     STOP_SUCCESS=$?
     if [ $STOP_SUCCESS -eq 0 ]; then
-        wait_for_stop $NGINX_PID_FILE
+        wait_for_stop_or_force $NGINX_PID_FILE $MAX_WAIT_TIME
     fi
     cd $CHORUS_HOME
   else
@@ -36,7 +38,7 @@ case $RAILS_ENV in
             bundle exec mizuno --stop --pidfile $MIZUNO_PID_FILE &>/dev/null
             STOP_SUCCESS=`expr $STOP_SUCCESS + $?`
             if [ $STOP_SUCCESS -eq 0 ]; then
-                wait_for_stop $MIZUNO_PID_FILE
+                wait_for_stop_or_force $MIZUNO_PID_FILE $MAX_WAIT_TIME
             fi
           else
             log "no mizuno to stop"
@@ -55,7 +57,7 @@ case $RAILS_ENV in
             STOP_SUCCESS=`expr $STOP_SUCCESS + $?`
             cd $CHORUS_HOME
             if [ $STOP_SUCCESS -eq 0 ]; then
-                wait_for_stop $JETTY_PID_FILE
+                wait_for_stop_or_force $JETTY_PID_FILE $MAX_WAIT_TIME
             fi
           else
             log "no jetty to stop"

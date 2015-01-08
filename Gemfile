@@ -21,10 +21,15 @@ gem 'premailer-rails'
 gem 'messengerjs-rails'
 gem 'codemirror-rails', '3.23'
 gem 'honor_codes', '~> 0.1.0'
+# Gem to generate JSON data output using Rails View
+gem 'jbuilder'
+# Gem that allows you to call view renders from anywhere (model, lib, rake, etc.)
+gem 'render_anywhere'
+
 
 platform :jruby do
   gem 'jruby-openssl', :require => false
-  gem 'activerecord-jdbcpostgresql-adapter'
+  gem 'activerecord-jdbcpostgresql-adapter', '1.3.7'
 end
 
 group :assets do
@@ -63,7 +68,7 @@ end
 group :development, :test, :integration, :packaging, :ci_jasmine, :ci_legacy, :ci_next do
   gem 'foreman', '>= 0.62',      :require => false
   gem 'rake',                    :require => false
-  gem 'rspec',                   :require => 'rspec/core/rake_task'
+  gem 'rspec', '2.14.1',                :require => 'rspec/core/rake_task'
   gem 'jasmine', :github => 'pivotal/jasmine-gem'
   gem 'jasmine-core', :github => 'pivotal/jasmine'
   gem 'sunspot_matchers'
@@ -71,6 +76,7 @@ group :development, :test, :integration, :packaging, :ci_jasmine, :ci_legacy, :c
   gem 'ci_reporter', '>= 1.8.2'
   gem 'faker'
   gem 'fakeweb'
+  gem 'quiet_assets'
   gem 'sunspot_solr', :github => 'taktsoft/sunspot', :ref => '78717a33894271d012682dbe8902458badb0ca63' # https://github.com/sunspot/sunspot/pull/267
   gem 'backbone_fixtures_rails', :github => 'charleshansen/backbone_fixtures_rails'
   gem 'rspec_api_documentation', :github => 'Chorus/rspec_api_documentation', :require => false

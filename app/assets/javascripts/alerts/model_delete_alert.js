@@ -3,11 +3,8 @@ chorus.alerts.ModelDelete = chorus.alerts.Confirm.extend({
         "click button.submit": "deleteModel"
     }),
     constructorName: "ModelDelete",
-
     focusSelector: "button.cancel",
-
     additionalClass: "error",
-
     persistent: true, //here for documentation, doesn't actually do anything as we've overwritten bindCallbacks
 
     bindCallbacks: function() {

@@ -18,6 +18,8 @@ class Dataset < ActiveRecord::Base
   has_many :imports, :as => :source
   has_many :tableau_workbook_publications, :dependent => :destroy
 
+  belongs_to  :workspace, :touch => true
+
   searchable_model :if => :should_reindex? do
     text :name, :stored => true, :boost => SOLR_PRIMARY_FIELD_BOOST
     text :database_name, :stored => true, :boost => SOLR_SECONDARY_FIELD_BOOST

@@ -1,6 +1,7 @@
 {{> errorDiv }}
 
 <div class="guts">
+    <form>
     <div class="girdle">
         <div class="content">
             <div class="right">
@@ -19,12 +20,12 @@
                 {{body}}
             </div>
         {{/if}}
-
     </div>
+    <!-- END girdle -->
 
     <div class="form_controls">
-        <button type="submit" class="submit modalish hidden" tabindex=1>{{ok}}</button>
-        <button type="button" class="cancel modalish" tabindex=2>{{cancel}}</button>
+        <button type="submit" class="submit modalish hidden" tabindex="1">{{ok}}</button>
+        <button type="button" class="cancel modalish" tabindex="2">{{cancel}}</button>
     </div>
-
+    </form>
 </div>

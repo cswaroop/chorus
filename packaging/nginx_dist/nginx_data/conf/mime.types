@@ -1,11 +1,10 @@
-
 types {
     text/html                             html htm shtml;
     text/css                              css;
     text/xml                              xml;
     image/gif                             gif;
     image/jpeg                            jpeg jpg;
-    application/x-javascript              js;
+    application/javascript                js;
     application/atom+xml                  atom;
     application/rss+xml                   rss;
 
@@ -24,7 +23,13 @@ types {
     image/svg+xml                         svg svgz;
     image/webp                            webp;
 
+    application/font-woff                 woff;
+    application/vnd.ms-fontobject         eot;
+    application/font-sfnt                 otf;
+    application/font-sfnt                 ttf;
+
     application/java-archive              jar war ear;
+    application/json                      json;
     application/mac-binhex40              hqx;
     application/msword                    doc;
     application/pdf                       pdf;
@@ -56,7 +61,6 @@ types {
     application/octet-stream              bin exe dll;
     application/octet-stream              deb;
     application/octet-stream              dmg;
-    application/octet-stream              eot;
     application/octet-stream              iso img;
     application/octet-stream              msi msp msm;
 

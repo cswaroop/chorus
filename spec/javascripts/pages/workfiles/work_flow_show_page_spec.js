@@ -222,6 +222,17 @@ describe("chorus.pages.WorkFlowShowPage", function() {
         });
     });
 
+    context("when the workfile is not accessible", function() {
+        it("handles the error", function() {
+            spyOn(Backbone.history, "loadUrl");
+            this.page.model.serverErrors = {
+                modelData: { }
+            };
+            this.page.model.trigger("resourceForbidden");
+            expect(Backbone.history.loadUrl).toHaveBeenCalled();
+        });
+    });
+
     context("when the workfile has errors", function() {
         context("when the errors come from the workspace", function() {
             it("does the normal thing", function() {

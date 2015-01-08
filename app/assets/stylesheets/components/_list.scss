@@ -39,7 +39,7 @@ ul li {
         margin-right: $list-breadcrumb-spacing;
 
         &::after {
-            font-family: "FontAwesome"
+            font-family: "FontAwesome";
             content: $list-breadcrumb-divider;
             margin-left: $list-breadcrumb-spacing;
             font-size: $list-breadcrumb-size;

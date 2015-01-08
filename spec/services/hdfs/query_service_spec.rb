@@ -3,7 +3,7 @@ require 'java'
 
 describe Hdfs::QueryService, :hdfs_integration do
   let(:hdfs_params) { HdfsIntegration.data_source_config }
-  let(:service) { Hdfs::QueryService.new(hdfs_params["host"], hdfs_params["port"], hdfs_params["username"], nil, false, []) }
+  let(:service) { Hdfs::QueryService.new(hdfs_params["host"], hdfs_params["port"], hdfs_params["username"], nil, false, [], "CDH5", "chorus") }
 
   before :all do
     # silence the HDFS log output from failed version connections
@@ -98,7 +98,7 @@ describe Hdfs::QueryService, :hdfs_integration do
     end
 
     context "connection is invalid" do
-      let(:service) { Hdfs::QueryService.new("bagbage", "8020", "pivotal", "0.20.1gp", false, []) }
+      let(:service) { Hdfs::QueryService.new("bagbage", "8020", "pivotal", "0.20.1gp", false, [], "CDH5", "chorus") }
 
       it "raises an exception" do
         expect { service.list("/") }.to raise_error(Hdfs::DirectoryNotFoundError)
@@ -119,7 +119,7 @@ describe Hdfs::QueryService, :hdfs_integration do
     end
 
     context "connection is invalid" do
-      let(:service) { Hdfs::QueryService.new("bagbage", "8020", "pivotal", "0.20.1gp", false, []) }
+      let(:service) { Hdfs::QueryService.new("bagbage", "8020", "pivotal", "0.20.1gp", false, [], "CDH5", "chorus") }
 
       it "raises an exception" do
         expect { service.details("/") }.to raise_error(Hdfs::FileNotFoundError)

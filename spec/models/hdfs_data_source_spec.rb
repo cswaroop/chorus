@@ -148,10 +148,12 @@ describe HdfsDataSource do
 
     context "when the server is not reachable" do
       let(:data_source) { hdfs_data_sources(:hadoop) }
+      let(:current_user) { users(:the_collaborator) }
       before do
         any_instance_of(Hdfs::QueryService) do |qs|
           stub(qs).list { raise Hdfs::DirectoryNotFoundError.new("ERROR!") }
         end
+        set_current_user(current_user)
       end
 
       it "marks all the hdfs entries as stale" do
@@ -165,10 +167,12 @@ describe HdfsDataSource do
 
     context "when a DirectoryNotFoundError happens on a subdirectory" do
       let(:data_source) { hdfs_data_sources(:hadoop) }
+      let(:current_user) { users(:the_collaborator) }
       before do
         any_instance_of(Hdfs::QueryService) do |qs|
           stub(qs).list { raise Hdfs::DirectoryNotFoundError.new("ERROR!") }
         end
+        set_current_user(current_user)
       end
 
       it "does not mark any entries as stale" do

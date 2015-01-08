@@ -1,11 +1,12 @@
+@import "_browser_support";
 @import "compass/css3/transform";
 
 .file-wrapper {
-    cursor: pointer;
     overflow: hidden;
     display: inline-block;
     position: relative;
     vertical-align: middle;
+    cursor: pointer;
 
     // this is a class so it is easy to remove in integration tests to avoid selenium errors
     .file-input {
@@ -19,7 +20,7 @@
         top: 0px;
         right: 0px;
         margin: 0;
-        pading: 0;
+        padding: 0;
         cursor: pointer;
         @include opacity(0);
         z-index: 1;

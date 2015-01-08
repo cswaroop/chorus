@@ -2,9 +2,9 @@ module Hdfs
   class ImportExecutor
     attr_accessor :import, :directory
 
-    def self.run(hdfs_import_id)
+    def self.run(hdfs_import_id, options={})
       import = HdfsImport.find hdfs_import_id
-      new(import: import).run
+      new(import: import).run(options.symbolize_keys)
     end
 
     def initialize(params)
@@ -12,8 +12,8 @@ module Hdfs
       @directory = import.hdfs_entry
     end
 
-    def run
-      query_service = QueryService.for_data_source(directory.hdfs_data_source)
+    def run(options)
+      query_service = QueryService.for_data_source(directory.hdfs_data_source, options[:username])
       query_service.import_data(import.destination_path, stream)
 
       create_success_event

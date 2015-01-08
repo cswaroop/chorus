@@ -86,7 +86,7 @@ class Workspace < ActiveRecord::Base
   def refresh_cache
     Chorus.log_debug "Refreshing cache for workspace with ID = #{self.id}"
 
-    json_data = render :partial => 'workspaces/workspace', :layout => false, :locals => {:workspace => self, :user => self.owner}
+    json_data = render :partial => 'workspaces/workspace', :layout => false, :locals => {:workspace => self, :user => self.owner, :options => {}}
     Rails.cache.write ["jbuilder/#{self.owner.id}", self], JSON.parse(json_data)
   end
 

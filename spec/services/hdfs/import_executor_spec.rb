@@ -3,13 +3,14 @@ require 'spec_helper'
 describe Hdfs::ImportExecutor do
   let(:hdfs_dir) { hdfs_entries(:directory) }
   let(:import) { FactoryGirl.create(:hdfs_import, :hdfs_entry => hdfs_dir) }
+  let(:options) { {'username' => 'chorus'}}
 
   describe '.run' do
 
     it 'creates an import executor with the specified import and runs it' do
       mock.proxy(described_class).new(import: import)
-      any_instance_of(described_class) { |exe| mock(exe).run }
-      described_class.run import.id
+      any_instance_of(described_class) { |exe| mock(exe).run(options.symbolize_keys) }
+      described_class.run(import.id, options)
     end
   end
 
@@ -27,20 +28,20 @@ describe Hdfs::ImportExecutor do
       end
 
       it 'imports the file in the hdfs data source of the hdfs entry' do
-        exe.run
+        exe.run(options)
       end
 
       it 'destroys the import and upload' do
         expect {
           expect {
-            exe.run
+            exe.run(options)
           }.to change(HdfsImport, :count).by(-1)
         }.to change(Upload, :count).by(-1)
       end
 
       it 'creates a success event' do
         expect {
-          exe.run
+          exe.run(options)
         }.to change(Events::HdfsImportSuccess, :count).by(1)
         e = Events::Base.last
         e.actor.should be_present
@@ -50,7 +51,7 @@ describe Hdfs::ImportExecutor do
 
       it 'creates a notification for the user' do
         expect {
-          exe.run
+          exe.run(options)
         }.to change(Notification, :count).by(1)
         n = Notification.last
         n.event.should == Events::Base.last
@@ -67,14 +68,14 @@ describe Hdfs::ImportExecutor do
       it 'destroys the import and upload' do
         expect {
           expect {
-            exe.run
+            exe.run(options)
           }.to change(HdfsImport, :count).by(-1)
         }.to change(Upload, :count).by(-1)
       end
 
       it 'creates a failure event' do
         expect {
-          exe.run
+          exe.run(options)
         }.to change(Events::HdfsImportFailed, :count).by(1)
         e = Events::Base.last
         e.actor.should be_present
@@ -85,7 +86,7 @@ describe Hdfs::ImportExecutor do
 
       it 'creates a notification for the user' do
         expect {
-          exe.run
+          exe.run(options)
         }.to change(Notification, :count).by(1)
         n = Notification.last
         n.event.should == Events::Base.last

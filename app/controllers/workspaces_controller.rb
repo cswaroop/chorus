@@ -32,8 +32,9 @@ class WorkspacesController < ApplicationController
         @workspaces = workspaces.where('id IN (' + top_workspace_ids.join(',') + ')')
                             .includes(succinct ? [:owner] : Workspace.eager_load_associations)
                             .order("lower(name) ASC, id")
+        @options = {:succinct => succinct, :show_latest_comments => (params[:show_latest_comments] == 'true')}
 
-          #present paginate(@workspaces),
+        #present paginate(@workspaces),
         #    :presenter_options => {
         #        :show_latest_comments => (params[:show_latest_comments] == 'true'),
         #       :succinct => succinct
@@ -44,6 +45,7 @@ class WorkspacesController < ApplicationController
 
       @workspaces = workspaces.includes(succinct ? [:owner] : Workspace.eager_load_associations)
                           .order("lower(name) ASC, id")
+      @options = {:succinct => succinct, :show_latest_comments => (params[:show_latest_comments] == 'true')}
 
       # present paginate(@workspaces),
       #        :presenter_options => {
@@ -54,7 +56,24 @@ class WorkspacesController < ApplicationController
     end
 
     @workspaces = paginate(@workspaces)
-    render :index, :formats => [:json]
+    # Fix for 85557406. Pagination not working on Workspace page in chorus.
+    # In order to append pagination to JSON object, I had to render the workspace array into a string and then
+    # append pagination to it. There is a problem with using top level array in Jbuilder that does not allow
+    # appending other elements to the top level array.
+
+    response = render_to_string :index, :formats => [:json]
+    json = JSON.parse(response)
+    if @workspaces.respond_to? :current_page
+      json[:pagination] = {
+          :page => @workspaces.current_page,
+          :per_page => @workspaces.per_page,
+          :records => @workspaces.total_entries,
+          :total => @workspaces.per_page > 0 ? @workspaces.total_pages : nil
+      }
+    end
+
+    render :json => json
+
   end
 
   def create

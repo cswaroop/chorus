@@ -111,7 +111,7 @@ describe("chorus.views.ResultsConsoleView", function() {
             });
 
             it("takes into account the vertical padding passed into the view", function() {
-                this.view.options.verticalDialogPadding = 2;
+                this.view.options.verticalDialogPosition = 2;
 
                 var availableHeight = this.view.boundingContainer.getAvailableHeight();
                 expect(availableHeight).toBe(this.windowHeight - 2);

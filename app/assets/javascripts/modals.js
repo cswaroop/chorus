@@ -1,7 +1,7 @@
 chorus.Modal = chorus.views.Base.extend({
     constructorName: "Modal",
-    verticalPadding: 30,
     focusSelector: 'input:eq(0)',
+    verticalPosition: 40, // distance of dialog from top of window
 
     launchModal: function() {
         if (chorus.modal && this !== chorus.modal) {
@@ -35,8 +35,8 @@ chorus.Modal = chorus.views.Base.extend({
 
         if (!windowHeight) windowHeight = $window.height();
 
-        $facebox.css('top', this.verticalPadding + 'px');
-        var popupHeight = windowHeight - this.verticalPadding*2;
+        $facebox.css('top', this.verticalPosition + 'px');
+        var popupHeight = windowHeight - this.verticalPosition*2;
         $popup.css("max-height", popupHeight + "px");
     },
 

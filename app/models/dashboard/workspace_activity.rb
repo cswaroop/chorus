@@ -66,6 +66,7 @@ module Dashboard
         .joins(:workspace)
         .group('workspace_id, workspaces.name, workspaces.summary')
         .where('workspace_id IS NOT NULL')
+        .where('workspaces.deleted_at IS NULL')
         .where("#{created_at_adjusted} >= :start_date and #{created_at_adjusted} <= :end_date",
                :start_date => @start_date,
                :end_date => Time.now)

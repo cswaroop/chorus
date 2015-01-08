@@ -83,6 +83,7 @@ describe("chorus.dialogs.NewTableImportCSV", function() {
     describe("click the 'comma' separator", hasRightSeparator(','));
     describe("click the 'semicolon' separator", hasRightSeparator(';'));
     describe("click the 'space' separator", hasRightSeparator(' '));
+    describe("click the 'pipe' separator", hasRightSeparator('|'));
 
     describe("changing the separator", function() {
         beforeEach(function() {

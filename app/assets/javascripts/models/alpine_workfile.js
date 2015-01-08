@@ -21,7 +21,7 @@ chorus.models.AlpineWorkfile = chorus.models.Workfile.include(
     },
 
     dataSourceRequiringCredentials: function() {
-        if (this.serverErrors.modelData.entityType !== "workspace") {
+        if (typeof(this.serverErrors.modelData.entityType) !== 'undefined' && this.serverErrors.modelData.entityType !== "workspace") {
             return this._super('dataSourceRequiringCredentials');
         }
     },

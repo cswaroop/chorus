@@ -3,11 +3,8 @@ chorus.alerts.CollectionDelete = chorus.alerts.Confirm.extend({
         "click button.submit": "deleteCollection"
     }),
     constructorName: "CollectionDelete",
-
     focusSelector: "button.cancel",
-
     additionalClass: "error",
-
     persistent: true, //here for documentation, doesn't actually do anything as we've overwritten bindCallbacks
 
     deleteCollection: function(e) {

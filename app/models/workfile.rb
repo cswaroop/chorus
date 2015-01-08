@@ -14,9 +14,10 @@ class Workfile < ActiveRecord::Base
 
   serialize :additional_data, JsonHashSerializer
 
-  belongs_to :workspace
-  belongs_to :owner, :class_name => 'User'
-  belongs_to :execution_location, :polymorphic => true
+  belongs_to :workspace, :touch => true
+  belongs_to :owner, :class_name => 'User', :touch => true
+  belongs_to :execution_location, :polymorphic => true, :touch => true
+
 
   has_many :activities, :as => :entity
   has_many :events, :through => :activities

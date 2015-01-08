@@ -93,7 +93,7 @@ module Chorus
     config.middleware.insert_before(Rails::Rack::Logger, ActionDispatch::Session::CookieStore)
     config.middleware.insert_before(ActionDispatch::Session::CookieStore, ActionDispatch::Cookies)
 
-    config.cache_store = :memory_store
+    #config.cache_store = :memory_store
 
     config.log_tags += [
       lambda do |req|

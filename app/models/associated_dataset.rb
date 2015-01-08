@@ -6,8 +6,8 @@ class AssociatedDataset < ActiveRecord::Base
   validate :dataset_not_chorus_view
   validate :ensure_active_workspace
 
-  belongs_to :workspace
-  belongs_to :dataset
+  belongs_to :workspace, :touch => true
+  belongs_to :dataset, :touch => true
 
   private
 

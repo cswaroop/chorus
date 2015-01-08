@@ -10,7 +10,7 @@ require 'fakefs/spec_helpers'
 #id: 63767
 #email: jg93904u9fhwe9ry@mailinator.com
 
-describe Kaggle::API, :kaggle_API => true do
+describe Kaggle::API, :kaggle_api => true do
   include KaggleSpecHelpers
 
   before :all do

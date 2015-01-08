@@ -9,7 +9,7 @@ gem 'cocaine', '0.2.1' # cocaine is a paperclip dependency but new versions of c
 gem 'queue_classic', :github => 'Chorus/queue_classic'
 gem 'clockwork',     :require => false
 gem 'allowy'
-gem 'sunspot_rails'
+gem 'sunspot_rails', '~> 2.0.0'
 gem 'jetpack', :github => 'Chorus/jetpack', :branch => '6c9253195b+chorus', :require => false
 gem 'nokogiri'
 gem 'sequel', '~> 4.0', :require => 'sequel/no_core_ext'
@@ -21,10 +21,15 @@ gem 'premailer-rails'
 gem 'messengerjs-rails'
 gem 'codemirror-rails', '3.23'
 gem 'honor_codes', '~> 0.1.0'
+# Gem to generate JSON data output using Rails View
+gem 'jbuilder'
+# Gem that allows you to call view renders from anywhere (model, lib, rake, etc.)
+gem 'render_anywhere'
+
 
 platform :jruby do
   gem 'jruby-openssl', :require => false
-  gem 'activerecord-jdbcpostgresql-adapter'
+  gem 'activerecord-jdbcpostgresql-adapter', '1.3.7'
 end
 
 group :assets do
@@ -35,18 +40,7 @@ group :assets do
   gem 'uglifier'
   gem 'yui-compressor'
   gem 'turbo-sprockets-rails3'
-
-#jquery-rails 2.1.4 ==> jquery 1.8.3
-gem 'jquery-rails', '2.1.4'
-
-#jquery-rails 2.2.0 ==> jquery 1.9.0
-#gem 'jquery-rails', '2.2.0'
-
-#jquery-rails 3.1.1 ==> jquery 1.11.1
-# updating to use jquery 1.11.1
-# gem 'jquery-rails', '3.1.1'
-
-  gem 'jquery-migrate-rails'
+  gem 'jquery-rails', '2.1.4'
 end
 
 group :integration do
@@ -74,7 +68,7 @@ end
 group :development, :test, :integration, :packaging, :ci_jasmine, :ci_legacy, :ci_next do
   gem 'foreman', '>= 0.62',      :require => false
   gem 'rake',                    :require => false
-  gem 'rspec',                   :require => 'rspec/core/rake_task'
+  gem 'rspec', '2.14.1',                :require => 'rspec/core/rake_task'
   gem 'jasmine', :github => 'pivotal/jasmine-gem'
   gem 'jasmine-core', :github => 'pivotal/jasmine'
   gem 'sunspot_matchers'
@@ -82,8 +76,8 @@ group :development, :test, :integration, :packaging, :ci_jasmine, :ci_legacy, :c
   gem 'ci_reporter', '>= 1.8.2'
   gem 'faker'
   gem 'fakeweb'
-  #gem 'sunspot_solr', :github => 'taktsoft/sunspot', :ref => '78717a33894271d012682dbe8902458badb0ca63' # https://github.com/sunspot/sunspot/pull/267
-  gem 'sunspot_solr'
+  gem 'quiet_assets'
+  gem 'sunspot_solr', :github => 'taktsoft/sunspot', :ref => '78717a33894271d012682dbe8902458badb0ca63' # https://github.com/sunspot/sunspot/pull/267
   gem 'backbone_fixtures_rails', :github => 'charleshansen/backbone_fixtures_rails'
   gem 'rspec_api_documentation', :github => 'Chorus/rspec_api_documentation', :require => false
 end

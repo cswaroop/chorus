@@ -57,6 +57,7 @@ chorus.views.WorkfileSidebar = chorus.views.Sidebar.extend({
                 displayStyle:['without_object', 'without_workspace']
             });
             this.tabs.bind("selected", _.bind(this.recalculateScrolling, this));
+            this.tabs.bind("selected", _.bind(function() { this.tabs.activity.show(); }, this));
             this.onceLoaded(this.model, this.modelLoaded);
 
         } else {

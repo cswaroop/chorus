@@ -31,6 +31,8 @@ $light-gray:        rgb(234, 238, 241);
 $shadow-gray:		darken($light-gray, 11%);
 $charcoal:          #464646;
 
+$core-white:        #FFFFFF;
+
 //transparent variants
 $shadow-color:		rgba($shadow-gray, .7);
 
@@ -173,7 +175,7 @@ $help-pill-width: 34px;
 $texteditor-min-height: 300px;
 $default-dialog-width: 500px;
 
-$margin-caret: 5px;		// space between the text and the caret glyph
+$caret-margin: 5px;		// space between the text and the caret glyph
 
 // z-indices
 $guts-z-index: 0;

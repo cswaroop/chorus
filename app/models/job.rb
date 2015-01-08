@@ -11,8 +11,8 @@ class Job < ActiveRecord::Base
 
   attr_accessible :enabled, :name, :next_run, :last_run, :interval_unit, :interval_value, :end_run, :time_zone, :status, :success_notify, :failure_notify
 
-  belongs_to :workspace
-  belongs_to :owner, :class_name => 'User'
+  belongs_to :workspace, :touch => true  #:counter_cache =>  true
+  belongs_to :owner, :class_name => 'User', :touch => true  #:counter_cache =>  true
 
   has_many :job_tasks, :order => :index
   has_many :job_results, :order => :finished_at

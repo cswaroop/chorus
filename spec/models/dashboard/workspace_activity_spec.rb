@@ -2,17 +2,17 @@ require 'spec_helper'
 
 describe Dashboard::WorkspaceActivity do
   let(:user) { users(:the_collaborator) }
+  before do
+    set_current_user(user)
+  end
 
   describe '#result by date groupings' do
-    test_cases = [
-      { :additional => {} },
+    [ { :additional => {} },
       { :additional => { :date_group => 'day' } },
       { :additional => { :date_group => 'week', :date_parts => 4} },
       { :additional => { :date_group => 'day',  :date_parts => 7 } },
       { :additional => { :date_group => 'week', :date_parts => 12} }
-    ]
-
-    test_cases.each_with_index do |tc, i|
+    ].each_with_index do |tc, i|
       it "has the correct structure for tc #{tc}" do
         @model = described_class.new({ :user => user }.merge(tc)).fetch!
         @result = @model.result
@@ -23,6 +23,7 @@ describe Dashboard::WorkspaceActivity do
         ws.should have_key(:name)
         ws.should have_key(:summary)
         ws.should have_key(:event_count)
+        ws.should have_key(:is_accessible)
 
         @result.should have_key(:events)
         ev = @result[:events].first

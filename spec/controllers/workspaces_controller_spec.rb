@@ -2,6 +2,7 @@ require 'spec_helper'
 require 'timecop'
 
 describe WorkspacesController do
+  render_views
   ignore_authorization!
 
   let(:owner) { users(:no_collaborators) }
@@ -15,41 +16,41 @@ describe WorkspacesController do
     let(:private_workspace) { workspaces(:private_with_no_collaborators) }
 
     it "returns workspaces that are public" do
-      get :index
+      get :index, :format => :json
       response.code.should == "200"
       decoded_response.map(&:name).should include workspaces(:public).name
     end
 
     it "returns workspaces the user is a member of" do
       log_in other_user
-      get :index
+      get :index, :format => :json
       response.code.should == "200"
       decoded_response.map(&:name).should include private_workspace.name
     end
 
     it "does not return private workspaces user is not a member of" do
       other_private = workspaces(:private)
-      get :index
+      get :index, :format => :json
       decoded_response.collect(&:name).should_not include other_private.name
     end
 
     it "includes private workspaces owned by the authenticated user" do
-      get :index
+      get :index, :format => :json
       decoded_response.collect(&:name).should include private_workspace.name
     end
 
     it "sorts by workspace name" do
-      get :index
+      get :index, :format => :json
       decoded_response[0].name.downcase.should < decoded_response[1].name.downcase
     end
 
     it "scopes by active status" do
-      get :index, :active => 1
+      get :index, :active => 1, :format => :json
       decoded_response.size.should == Workspace.workspaces_for(owner).active.count
     end
 
     it "scopes by memberships" do
-      get :index, :user_id => other_user.id
+      get :index, :user_id => other_user.id, :format => :json
       inaccessible_workspaces = other_user.workspaces - Workspace.accessible_to(owner)
       decoded_response.size.should == other_user.workspaces.count - inaccessible_workspaces.length
       decoded_response.map(&:name).should_not include(workspaces(:private).name)
@@ -57,33 +58,34 @@ describe WorkspacesController do
 
     it "shows admins all workspaces scoped by membership" do
       log_in users(:admin)
-      get :index, :user_id => other_user.id
+      get :index, :user_id => other_user.id, :format => :json
       decoded_response.size.should == other_user.workspaces.count
     end
 
     describe "pagination" do
 
       it "paginates the collection" do
-        get :index, :page => 1, :per_page => 2
+        get :index, :page => 1, :per_page => 2, :format => :json
         decoded_response.length.should == 2
       end
 
       it "accepts a page parameter" do
-        get :index, :page => 2, :per_page => 2
+        get :index, :page => 2, :per_page => 2, :format => :json
         decoded_response.first.name.should == Workspace.workspaces_for(owner).order("lower(name) ASC")[2].name
       end
 
       it "defaults the per_page to fifty" do
-        get :index
+        get :index, :format => :json
         request.params[:per_page].should == 50
       end
     end
 
     generate_fixture "workspaceSet.json" do
-      get :index, :show_latest_comments => 'true'
+      get :index, :show_latest_comments => 'true', :format => :json
     end
 
-    it_behaves_like :succinct_list
+    # this mocks a Presenter.present call, which is no longer used for workspaces index
+    # it_behaves_like :succinct_list
   end
 
   describe "#create" do

@@ -1,9 +1,9 @@
-.data_source_edit {
-    $hostname-width : 375px;
-    $account_width : 240px;
-    $input-spacing : 12px;
-    $fieldset-width : $default-dialog-width - 2 * $dialog-padding;
+$hostname-width : 375px;
+$account_width : 240px;
+$input-spacing : 12px;
+$fieldset-width : $default-dialog-width - 2 * $dialog-padding;
 
+.data_source_edit {
     input[type=text][disabled=disabled] {
         border: 0;
         background: none;
@@ -26,8 +26,7 @@
         width: $hostname-width;
     }
 
-    .username, .group_list, .gnip_username, .gnip_password
-    {
+    .username, .group_list, .gnip_username, .gnip_password {
         width: $account_width;
     }
 

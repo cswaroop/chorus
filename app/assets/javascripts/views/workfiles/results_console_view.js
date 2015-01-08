@@ -26,12 +26,12 @@ chorus.views.ResultsConsole = chorus.views.Base.extend({
             },
 
             distanceFromBottomOfWindow: function() {
-                var verticalDialogPadding = 0;
-                if (view.options.verticalDialogPadding) {
-                    verticalDialogPadding = view.options.verticalDialogPadding;
+                var verticalDialogPosition = 0;
+                if (view.options.verticalDialogPosition) {
+                    verticalDialogPosition = view.options.verticalDialogPosition;
                 }
 
-                return verticalDialogPadding + this.bottomGutterHeight() + this.footerSize();
+                return verticalDialogPosition + this.bottomGutterHeight() + this.footerSize();
             },
 
             bottomGutterHeight: function() {

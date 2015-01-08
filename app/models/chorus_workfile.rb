@@ -14,6 +14,11 @@ class ChorusWorkfile < Workfile
   accepts_nested_attributes_for :versions
 
   def svg_data=(svg_data)
+    # Note: This conversion upon assignment depends on the "file_name"
+    # being populated--and that file_name is being assigned from the same
+    # hash (during build_for)
+    # So 'file_name' has to precede 'svg_data' in the params hash
+    # providing this.
     transcoder = SvgToPng.new(svg_data)
     versions.build :contents => transcoder.fake_uploaded_file(file_name)
   end
@@ -29,8 +34,8 @@ class ChorusWorkfile < Workfile
   end
 
   def update_from_params!(params)
-    is_upload = !params[:file_name]
-    is_svg = params[:svg_data]
+    is_upload = params[:file_name].nil?
+    is_svg = !params[:svg_data].nil?
     self.resolve_name_conflicts = (is_svg || is_upload)
     save!
   end

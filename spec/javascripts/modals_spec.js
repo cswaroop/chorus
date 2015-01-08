@@ -94,15 +94,16 @@ describe("chorus.Modal", function() {
                     this.modal.render();
                 });
 
-                it("sets the dialog.top to 30", function() {
+                it("sets the dialog.top to 40", function() {
                     this.modal.resize();
-                    expect(cssCalls()).toContain(["top", "30px"]);
+                    expect(cssCalls()).toContain(["top", "40px"]);
                 });
 
 
                 it("with no arguments uses window.height", function() {
                     this.modal.resize();
-                    var windowHeight = $(window).height() - 60 + "px";
+                    // calculate modal height by total window height - 2 * top.position
+                    var windowHeight = $(window).height() - 80 + "px";
 
                     var lastCall = $.fn.css.lastCall();
                     expect(lastCall.args).toEqual(["max-height", windowHeight]);
@@ -111,13 +112,13 @@ describe("chorus.Modal", function() {
 
                 it("has a max-height smaller than the window's height by twice the dialog's distance from the top of the window", function() {
                     this.modal.resize(0, 100);
-                    expect(cssCalls()).toContain(["max-height", "40px"]);
+                    expect(cssCalls()).toContain(["max-height", "20px"]);
 
                     this.modal.resize(0, 1000);
-                    expect(cssCalls()).toContain(["max-height", "940px"]);
+                    expect(cssCalls()).toContain(["max-height", "920px"]);
 
                     this.modal.resize(0, 500);
-                    expect(cssCalls()).toContain(["max-height", "440px"]);
+                    expect(cssCalls()).toContain(["max-height", "420px"]);
                 });
             });
 

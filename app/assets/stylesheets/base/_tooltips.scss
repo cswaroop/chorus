@@ -1,6 +1,10 @@
 @import "_browser_support";
 @import "_common";
 
+/* grey color for the (?) glyph on forms that provide more info */
+$more-info-color: #888888;
+
+
 @mixin tooltip($text, $bg, $border){
     .ui-tooltip-content {
         color: $text;
@@ -47,10 +51,10 @@
 
 .tooltip-error {
     @include tooltip($error-text-color, #B61B1D, #B61B1D);
-    box-shadow: $shadow-canon;
+    /* box-shadow: $shadow-canon; */
 
     .ui-tooltip-content {
-        font-size: 16px;
+        font-size: $medium-font;
         line-height: 16px;
         max-width: 350px;
     }
@@ -60,17 +64,17 @@
     @include tooltip($error-text-color, #282828, #282828);
 
     .ui-tooltip-content {
-        font-size: 12px;
+        font-size: $small-font;
         line-height: normal;
         max-width: 350px;
     }
 }
 
 .tooltip-function {
-    @include tooltip($error-text-color, #282828, #282828);
+    @include tooltip($error-tooltiptext-color, #282828, #282828);
 
     .ui-tooltip-content {
-        font-size: 12px;
+        font-size: $small-font;
         min-width: 250px;
         max-width: 350px;
         line-height: 1.2;
@@ -112,11 +116,12 @@
 }
 
 .more-info {
-/* 	background-image: url('/images/more-info.png'); */
-/* 	display: inline-block; */
-/* 	height: 12px; */
-/* 	width: 12px; */
-
+    /* 	background-image: url('/images/more-info.png'); */
+    /* 	display: inline-block; */
+    /* 	height: 12px; */
+    /* 	width: 12px; */
+    color: $more-info-color;
+    
 	&:hover::after {
     	text-decoration: none !important;	
 	}
@@ -126,7 +131,7 @@
 		position: relative;
 		left: $caret-margin;
 		font-family: FontAwesome;
-		content: "\f0d7";
+		content: "\f059";  /* question-circle */
 	}
 }
 
@@ -157,5 +162,11 @@
 
 /* specific color for the (?) glyph */
 .fa-question-circle {
-	color: #888;
+	color: $more-info-color;
+}
+
+a.more {
+    /* when the 'show more' link is used, adjust to reflect font size of context */
+    font-size: inherit;
+    
 }

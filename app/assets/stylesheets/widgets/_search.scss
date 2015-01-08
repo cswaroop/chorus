@@ -1,7 +1,11 @@
+input {
+    &.search {
+        color: #606060;
+    }
+}
 
 input.chorus_search {
     margin: 0;
-
     padding: 2px 20px 2px 25px;
 /*     background: url("/images/search-icon.png") no-repeat 9px 3px; */
     outline: none;
@@ -15,14 +19,15 @@ input.chorus_search {
     vertical-align: top;
 }
 
+
 .search_magnifying_glass:before {
     position: absolute;
-    top: 2px;
+    top: 0px;
     left: 8px;
-    font-family: Icons;
+    font-family: FontAwesome;
     color: $gray;
     font-size: 13px;
-    content: "\e08f";
+    content: "\f002";
 }
 
 .chorus_search_container {
@@ -35,13 +40,14 @@ input.chorus_search {
 
 a.chorus_search_clear {
     position: absolute;
-    top: 50%;
-
-    margin-top: -14px;
+    top: 1px;
+    /* margin-top: -14px; */
     right: 8px;
-/*     line-height: 12px; */
-    i {
-        font-size: 9px;
-        color: $gray;
-    }
+    /* line-height: 12px; */
+    color: $gray;
+
+/*     i { */
+/*         font-size: 9px; */
+/*         color: $gray; */
+/*     } */
 }

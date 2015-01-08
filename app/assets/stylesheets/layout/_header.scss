@@ -10,7 +10,6 @@ $header-margin-right: $page-margin-right;
 $expanded-search-width: 450px;
 $notification-token-width: $header-margin * 2;
 
-
 @mixin full-item-link($height) {
     &:hover, &.selected {
         background-color: $list-hover-color;
@@ -76,7 +75,6 @@ $notification-token-width: $header-margin * 2;
 
         .left {
             float: left;
-
             #primary-menu {
             	position: relative;
             	top: 1px;
@@ -137,7 +135,6 @@ $notification-token-width: $header-margin * 2;
 
                     /* when activating the menu, switch thecaret */
                     content:  "\f0d8";  // =  fa-caret-up
-
                 }
 
                 &.username {
@@ -154,7 +151,7 @@ $notification-token-width: $header-margin * 2;
                         &.empty { background: $brand-dark; }
                         background: $notification;
 
-                        @include lozenge(2px, 30px, $header-height/3);
+                        @include lozenge(2px, 30px, $header-height/3 );
                     }
                 }
 
@@ -180,29 +177,24 @@ $notification-token-width: $header-margin * 2;
                 color: $brand-light;
                 z-index: 1;
 
-
-/*                 &.search_clear { font-size: 10px; } */
-/*                 &.magnifying_glass { */
-/*                     position: absolute; */
-/*                     left: 168px; */
-/*                     top: 16px; */
-/*                     font-size: 15px; */
-/*                 } */
-
-                &.search_clear { font-size: 14px; }
+                &.search_clear {
+                    font-size: 14px;
+                    position: relative;
+                    top: 2px;
+                }
                 &.magnifying_glass {
                     position: absolute;
                     left: 168px;
                     top: 16px;
                     font-size: 16px;
                 }
-            }
 
+            }
             .search_magnifying_glass:before {
                 z-index: 1;
                 color: $brand-light;
                 font-size: 15px;
-                top: 4px;
+                top: 2px;
             }
             
             input {

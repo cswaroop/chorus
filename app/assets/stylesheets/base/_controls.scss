@@ -6,6 +6,9 @@
   transform: translateY(-50%);
 }
 
+/* * */
+/* .form_controls= the 'footer' section at bottom of dialogs with the buttons */
+/* * */
 .popup .form_controls {
     height: 50px;
     background-color: $dialog-header-background;
@@ -38,7 +41,8 @@
     @include after-clearfix;
 }
 
-.controls, .form_controls {
+.controls,
+.form_controls {
     button {
         display: inline-block;
         div[aria-role=progressbar] {

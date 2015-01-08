@@ -134,7 +134,7 @@
   }
   .ui-icon {
     top: 2px;
-    background: url(/images/select-sprite.png) no-repeat 0 1px;
+    background: url(/images/general/select-sprite.png) no-repeat 0 1px;
     width: 18px;
     height: 26px;
     position: absolute;
@@ -193,8 +193,8 @@
 }
 
 .ui-selectmenu-menu li a {
-  color: black;
-  padding: 2px 5px 2px 1em;
+  color: #000000;
+  padding: 3px 10px;
 }
 
 .ui-selectmenu-menu li.ui-state-disabled a, .ui-state-disabled {

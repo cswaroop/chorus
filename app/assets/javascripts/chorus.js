@@ -228,12 +228,8 @@ window.Chorus = function chorus$Global() {
 // **************
 // - magnifying glass at beginning of field
 // - clear element at end of field
-    
-//     self.addClearButton = function(input) {
-
 
     self.addSearchFieldModifications = function(input) {
-
         if ($(input).parent().is(".chorus_search_container")) return;
 
         var $input = $(input);
@@ -255,7 +251,6 @@ window.Chorus = function chorus$Global() {
         magnifyGlassWrap.insertAfter($input);
         magnifyGlassWrap.append($input).append(clearLink);
         magnifyGlassWrap.wrapAll(container);
-
     };
 
     self.hotKeyMeta = BrowserDetect.OS === "Mac" ? "ctrl" : "alt";

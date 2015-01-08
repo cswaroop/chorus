@@ -63,39 +63,38 @@ $refresh-activity-gutter: $activity-gutter - 5;
 }
 
 .insight_ribbon {
-        padding: 0;
-        position: absolute;
-        left: -7px;
-        top: -9px;
-        z-index: 10;
-        line-height: 11px;
-        height: 22px;
+	padding: 0;
+	position: absolute;
+	left: -7px;
+	top: -9px;
+	z-index: 10;
+	line-height: 11px;
+	height: 22px;
 
-        .left {
-            background: url(/images/ribbons/label_insight1.png) no-repeat;
-            width: 6px;
-            height: 22px;
-            display: inline-block;
-        }
+	.left {
+		background: url(/images/ribbons/label_insight1.png) no-repeat;
+		width: 6px;
+		height: 22px;
+		display: inline-block;
+	}
 
-        .center {
-            @include database-column-type;
-            background: url(/images/ribbons/label_insight2.png) repeat-x;
-            height: 14px;
-            display: inline-block;
-            padding: 3px 8px 2px 8px;
-            vertical-align: top;
-            @include uppercase;
-        }
+	.center {
+		background: url(/images/ribbons/label_insight2.png) repeat-x;
+		display: inline-block;
+		height: 14px;
+		padding: 3px 8px 2px 8px;
+		vertical-align: top;
+		@include insight-ribbon;
+		@include uppercase;
+	}
 
-        .right {
-            background: url(/images/ribbons/label_insight3.png) no-repeat;
-            width: 12px;
-            height: 22px;
-            display: inline-block;
-        }
-    }
-
+	.right {
+		background: url(/images/ribbons/label_insight3.png) no-repeat;
+		width: 12px;
+		height: 22px;
+		display: inline-block;
+	}
+}
 
 .comment_list {
     .comments {
@@ -185,7 +184,7 @@ $refresh-activity-gutter: $activity-gutter - 5;
             position: relative;
             top: -1px;
             color: $shadow-gray;
-            margin: 0 3px;
+            margin: 0 $separator-space;
         }
     }
 

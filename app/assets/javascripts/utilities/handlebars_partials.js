@@ -21,3 +21,5 @@ Handlebars.registerPartial("notificationsMenu", window.HandlebarsTemplates["comp
 Handlebars.registerPartial("headerLeft", window.HandlebarsTemplates["components/header_left"]);
 Handlebars.registerPartial("headerSearchbar", window.HandlebarsTemplates["components/header_searchbar"]);
 Handlebars.registerPartial("headerRight", window.HandlebarsTemplates["components/header_right"]);
+
+Handlebars.registerPartial("legendRequired", window.HandlebarsTemplates["components/legend_for_required"]);

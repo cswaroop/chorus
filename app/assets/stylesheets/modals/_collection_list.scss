@@ -13,7 +13,7 @@ $dialog-list-item-right-padding: 15px;
             border-bottom: $border-canon;
             padding: 0 $dialog-list-item-right-padding 0 $dialog-list-item-left-padding;
             line-height: $list-item-height;
-/*             vertical-align: middle; */
+/*             vertical-align: middle; */ /* to be deleted when final */
             @include ellipsis;
 
             img {

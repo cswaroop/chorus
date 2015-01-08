@@ -1,6 +1,7 @@
 #main_content {
-    border: $border-canon;
-    @include border-radius(3px);
+/*     border: $border-canon; */
+    border-right: $border-canon;
+/*     @include border-radius(3px); */
 }
 
 .content_header {

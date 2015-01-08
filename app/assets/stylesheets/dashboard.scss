@@ -1,9 +1,9 @@
 $debug-browser-support: true;
 
-@import "compass/css3/border-radius";
 @import "_browser_support";
 @import "_common";
-@import "_button_common";
+@import "components/_button";
+@import "compass/css3/border-radius";
 
 
 $padding-side-canon: 10px;
@@ -56,8 +56,9 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
         background-color: $shaded-background-color;
         display: inline-block;
         cursor: pointer;
+
+        /* covers the glyphs used, such as the cog */
         i {
-            /* covers the FA and OI glyphs used, such as the cog */
             color: $color-text3;
             font-size: 13px;
             line-height: $height-button-widgetshell;
@@ -317,7 +318,7 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
         margin-right: 3px;
         cursor: pointer;
         
-        /* covers the FA and OI glyphs used; i.e the cog */
+        /* covers the glyphs used; i.e the cog */
         i {
             color: $color-text3;
             font-size: 12px;

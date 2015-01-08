@@ -1,7 +1,14 @@
-.notes_new, .edit_note, .dialog.comment {
+$label-width: 72px;
 
+
+.notes_new,
+.edit_note,
+.dialog.comment {
+
+    font-size: 12px;
+    
     textarea {
-        min-width : 350px;
+        min-width: 350px;
         min-height: 75px;
         resize: none;
     }
@@ -9,7 +16,7 @@
     a {
         font-size: 12px;
         font-weight: $semibold;
-        line-height: 16px;
+        /* line-height: 16px; */
     }
 
     .toolbar {
@@ -171,4 +178,11 @@
             width: 200px;
         }
     }
+    
+    .remove {
+        float: right;
+        font-size: 14px;
+        line-height: 20px;
+    }
+        
 }

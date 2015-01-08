@@ -14,21 +14,24 @@
             <div class="schema_menu_container">
                 <ul class="schema_menu">
                     <li>
-                        <div class="check">
+                       
 						{{#if isWorkspaceSchema}}
-							<i class="fa fa-check-circle-o"></i>
+						 <div class="checkmark">
+						    <i class="fa fa-check"></i>
+						</div>
 						{{/if}}
-                        </div>
                        
                         <a class="schema" data-id="workspaceSchema">{{t "database.sidebar.this_workspace"}}</a>
                     </li>
                     {{#each schemas}}
                         <li>
-                            <div class="check">
+
                             {{#if isCurrent}}
-                            	<i class="fa fa-check-circle-o"></i>
+                            <div class="checkmark">
+                            	<span class="fa fa-check"></span>
+                            </div>
                             {{/if}}
-							</div>
+
                             <a class="schema" data-id="{{id}}">{{name}}</a>
                         </li>
                     {{/each}}

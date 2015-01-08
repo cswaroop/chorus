@@ -5,7 +5,6 @@ $sub_nav-lozenge-min-width: 90px;
 $sub_nav-lozenge-height: 23px;
 
 .sub_nav {
-/*     padding-top: $header-height + $subheader-height; */
     margin-top: $header-height + $subheader-height;
     height: $subnav-height;
     padding-left: $page-margin-left;
@@ -22,10 +21,14 @@ $sub_nav-lozenge-height: 23px;
 
         @include pill-tab($sub_nav-lozenge-min-width, $sub_nav-lozenge-height);
 
+        @include pill-tab-colors($lozenge-color-normal, $lozenge-color-hover, $lozenge-color-selected);
     }
-    /* specials for subnav */
-    .lozenge {
-        background-color: #F5F7F8;
-    }
+//   specials for subnav */
+//
+//    .lozenge {
+//        background-color: $lozenge-color-normal;
+//    }
+//    
+//
     @include after-clearfix;
 }

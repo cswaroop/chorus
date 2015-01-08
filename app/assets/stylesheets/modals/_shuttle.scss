@@ -6,35 +6,32 @@ $shuttle-list-item-height: 40px;
     .shuttle_header {
         border-bottom: $border-canon;
         position: relative;
-        height: 33px;
+        height: 35px;
 
         .search_container {
             left: 0;
             border-right: $border-canon;
-
-            .chorus_search_container {
-                width: 70%;
-            }
         }
 
         .summary {
             left: 50%;
         }
 
-         .search_container, .summary {
-            position: absolute;
-            width: 50%;
-            height: 100%;
-            vertical-align: middle;
-            line-height: 25px;
+        .search_container {
+            padding-right: 15px;
+        }
+        .summary {
+            padding-left: 15px;
+        }
 
-            > div {
-                padding: 4px 8px;
-            }
+        a {
+            float: right;
+            font-weight: $semibold;
+        }            
 
-            a {
-               float: right;
-            }
+        .chorus_search_container {
+            display:inline-block;
+            width: 70%;
         }
 
         .object_name {
@@ -45,9 +42,6 @@ $shuttle-list-item-height: 40px;
             padding-left: 5px;
         }
 
-        a {
-            font-weight: $semibold;
-        }
     }
 
     .shuttle_body {
@@ -89,11 +83,13 @@ $shuttle-list-item-height: 40px;
         bottom: 0;
         vertical-align: top;
         overflow-y: auto;
+        overflow-x: hidden;
 
         li {
             height: $shuttle-list-item-height;
             border-bottom: $border-canon;
-            padding: 0 8px;
+            /* padding: 0 8px; */
+            padding: 0;
             line-height: $shuttle-list-item-height - 3px;
 
             .name {
@@ -102,10 +98,11 @@ $shuttle-list-item-height: 40px;
                 @include ellipsis;
                 padding-left: 10px;
                 display: inline-block;
-                max-width: 60%;
+                max-width: 65%;
             }
         }
 
+/* available = left-side of the 2column list */
         &.available {
             left: 0;
             border-right: $border-canon;
@@ -141,7 +138,8 @@ $shuttle-list-item-height: 40px;
                 }
             }
         }
-
+        
+/* selected = right-side of the 2column list */
         &.selected {
             left: 50%;
 
@@ -155,6 +153,6 @@ $shuttle-list-item-height: 40px;
     }
 }
 
-.dialog.workspace_edit_members .dialog_content .form_controls {
-     margin-top: 0px;
-}
+/* .dialog.workspace_edit_members .dialog_content .form_controls { */
+/*      margin-top: 0px; */
+/* } */

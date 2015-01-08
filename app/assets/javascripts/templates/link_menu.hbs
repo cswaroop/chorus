@@ -8,7 +8,7 @@
     <ul data-event="{{event}}" class="list">
         {{#each options}}
             <li data-type="{{data}}">
-                <div class="check {{#unless isChecked}}hidden{{/unless}}"></div>
+                <span class="check {{#unless isChecked}}hidden{{/unless}}"></span>
                 {{#if disabled}}
                     <span class="unavailable">{{text}}</span>
                 {{else}}

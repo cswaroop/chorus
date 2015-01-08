@@ -508,14 +508,14 @@ describe("chorus global", function() {
             this.input1 = $("<input></input>");
             this.container = $("<div></div>").append(this.input1);
 
-            chorus.addClearButton(this.input1);
+            chorus.addSearchFieldModifications(this.input1);
             this.clearLink = this.container.find("a.chorus_search_clear");
         });
 
         it("adds a little 'x' to the right of the search input", function() {
             this.input1.val("nit").trigger("textchange");
             expect(this.clearLink).toExist();
-            expect(this.clearLink.find("i").attr("data-glyph")).toBe("x");
+            expect(this.clearLink.find("span").attr("class")).toBe("search_clear");
         });
 
         it("hides the 'x' when the input is blank", function() {

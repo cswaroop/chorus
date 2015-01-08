@@ -1,3 +1,5 @@
 [submodule "chorushdfs"]
 	path = chorushdfs
-	url = git@github.com:Chorus/chorushdfs.git
+	url = https://github.com/Chorus/chorushdfs.git
+
+

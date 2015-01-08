@@ -65,31 +65,42 @@ function start () {
 }
 
 function stop () {
+  while getopts "t:" OPTION; do
+       case $OPTION in
+           t)
+               MAX_WAIT_TIME=$OPTARG
+               ;;
+       esac
+  done
+  shift $(( OPTIND - 1 ))
+  services=(${@})
+
   EXIT_STATUS=0
   pushd $CHORUS_HOME > /dev/null
   if should_handle webserver;  then
-    $bin/stop-webserver.sh;
+    $bin/stop-webserver.sh  $MAX_WAIT_TIME;
     EXIT_STATUS=`expr $EXIT_STATUS + $?`;
   fi
   if should_handle scheduler;  then
-    $bin/stop-scheduler.sh;
+    $bin/stop-scheduler.sh  $MAX_WAIT_TIME;
     EXIT_STATUS=`expr $EXIT_STATUS + $?`;
   fi
   if should_handle workers;    then
-    $bin/stop-workers.sh;
+    $bin/stop-workers.sh $MAX_WAIT_TIME
+
     EXIT_STATUS=`expr $EXIT_STATUS + $?`;
   fi
   if should_handle solr;       then
-    $bin/stop-solr.sh;
+    $bin/stop-solr.sh  $MAX_WAIT_TIME;
     EXIT_STATUS=`expr $EXIT_STATUS + $?`;
   fi
   if should_handle postgres;   then
-    $bin/stop-postgres.sh;
+    $bin/stop-postgres.sh  $MAX_WAIT_TIME;
     EXIT_STATUS=`expr $EXIT_STATUS + $?`;
   fi
   if should_handle alpine;   then
     if [ "$ALPINE_HOME" != "" ]; then
-        $bin/stop-alpine.sh;
+        $bin/stop-alpine.sh  $MAX_WAIT_TIME;
         EXIT_STATUS=`expr $EXIT_STATUS + $?`;
     fi
   fi
@@ -217,12 +228,12 @@ function usage () {
   echo "$script is a utility to start, stop, restart, or monitor the Chorus services."
   echo
   echo Usage:
-  echo "  $script start   [services]         start services"
-  echo "  $script stop    [services]         stop services"
-  echo "  $script restart [services]         stop and start services"
-  echo "  $script monitor [services]         monitor and restart services as needed"
-  echo "  $script backup  [-d dir] [-r days] backup Chorus data"
-  echo "  $script restore [file]             restore Chorus data"
+  echo "  $script start   [services]                       start services"
+  echo "  $script stop    [-t max_wait_time] [services]    stop services"
+  echo "  $script restart [-t max_wait_time] [services]    stop and start services"
+  echo "  $script monitor [services]                       monitor and restart services as needed"
+  echo "  $script backup  [-d dir] [-r days]               backup Chorus data"
+  echo "  $script restore [file]                           restore Chorus data"
   echo
   if [ "$ALPINE_HOME" != "" ]; then
     echo "The following services are available: postgres, workers, scheduler, solr, webserver, alpine."
@@ -233,7 +244,10 @@ function usage () {
   echo
   echo Examples:
   echo "  $script start                      start all services"
-  echo "  $script stop                       stop all services"
+  echo "  $script stop                       stop all services, waiting max of 5 seconds"
+  echo "  $script stop -t 10                 stop all services, waiting max of 10 seconds"
+  echo "  $script stop -t -1                 stop all services, waiting indefinitely"
+  echo "  $script stop -t 0 workers          stop workers immediately"
   echo "  $script restart                    restart all services"
   echo "  $script monitor                    monitor all services"
   echo
@@ -255,10 +269,10 @@ case $command in
         start
         ;;
     stop )
-        stop
+        stop ${@}
         ;;
     restart )
-        stop
+        stop ${@}
         start
         ;;
     monitor )

@@ -142,10 +142,12 @@ describe HdfsDataset do
 
   describe 'contents' do
     let(:hdfs_data_source) { hdfs_data_sources(:hadoop) }
+    let(:current_user) { users(:the_collaborator) }
     before do
       any_instance_of(Hdfs::QueryService) do |h|
         stub(h).show(dataset.file_mask) { ["content"] }
       end
+      set_current_user(current_user)
     end
 
     it "returns the contents of the hdfs dataset" do

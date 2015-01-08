@@ -148,10 +148,12 @@ describe HdfsDataSource do
 
     context "when the server is not reachable" do
       let(:data_source) { hdfs_data_sources(:hadoop) }
+      let(:current_user) { users(:the_collaborator) }
       before do
         any_instance_of(Hdfs::QueryService) do |qs|
           stub(qs).list { raise Hdfs::DirectoryNotFoundError.new("ERROR!") }
         end
+        set_current_user(current_user)
       end
 
       it "marks all the hdfs entries as stale" do
@@ -165,10 +167,12 @@ describe HdfsDataSource do
 
     context "when a DirectoryNotFoundError happens on a subdirectory" do
       let(:data_source) { hdfs_data_sources(:hadoop) }
+      let(:current_user) { users(:the_collaborator) }
       before do
         any_instance_of(Hdfs::QueryService) do |qs|
           stub(qs).list { raise Hdfs::DirectoryNotFoundError.new("ERROR!") }
         end
+        set_current_user(current_user)
       end
 
       it "does not mark any entries as stale" do
@@ -187,7 +191,7 @@ describe HdfsDataSource do
 
   describe "after being created" do
     before do
-      @new_data_source = HdfsDataSource.create({:owner => User.first, :name => "Hadoop", :host => "localhost", :port => "8020", :hdfs_version => "Pivotal HD 2.0"}, { :without_protection => true })
+      @new_data_source = HdfsDataSource.create({:owner => User.first, :name => "Hadoop", :host => "localhost", :port => "8020", :hdfs_version => "Pivotal HD 2"}, { :without_protection => true })
     end
 
     it "creates an HDFS root entry" do

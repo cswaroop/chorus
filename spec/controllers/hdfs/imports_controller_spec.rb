@@ -34,7 +34,7 @@ describe Hdfs::ImportsController do
       end
 
       it 'enqueues the import' do
-        mock(QC.default_queue).enqueue_if_not_queued('Hdfs::ImportExecutor.run', is_a(Fixnum))
+        mock(QC.default_queue).enqueue_if_not_queued('Hdfs::ImportExecutor.run', is_a(Fixnum), 'username' => user.username)
         post :create, params
       end
 

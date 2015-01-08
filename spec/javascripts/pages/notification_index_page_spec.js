@@ -24,15 +24,6 @@ describe("chorus.pages.NotificationIndexPage", function() {
             expect(this.page.refreshNotifications).toHaveBeenCalled();
         });
 
-        it("should have the right breadcrumbs", function() {
-            expect(this.page.$(".breadcrumb:eq(0) a").attr("href")).toBe("#/");
-            expect(this.page.$(".breadcrumb:eq(0)").text().trim()).toMatchTranslation("breadcrumbs.home");
-
-            expect(this.page.$(".breadcrumb:eq(1)").text().trim()).toMatchTranslation("breadcrumbs.notifications");
-
-            expect(this.page.$(".breadcrumb").length).toBe(2);
-        });
-
         it("displays the page header", function() {
             expect(this.page.mainContent.contentHeader.$("h1").text()).toContainTranslation("header.your_notifications");
         });

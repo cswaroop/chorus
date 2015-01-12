@@ -36,7 +36,6 @@ chorus.collections.WorkspaceDatasetSet = chorus.collections.LastFetchWins.includ
         if (this.attributes.allImportSources) {
             params.allImportSources = true;
         }
-
         return params;
     },
 

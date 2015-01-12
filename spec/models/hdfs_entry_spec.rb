@@ -50,6 +50,7 @@ describe HdfsEntry do
   describe ".list" do
     context "queries the hdfs query system and retrieve entries objects" do
       let(:hdfs_data_source) { hdfs_data_sources(:hadoop) }
+      let(:current_user) { users(:the_collaborator) }
 
       before do
         @hdfs_results =
@@ -71,6 +72,8 @@ describe HdfsEntry do
         any_instance_of(Hdfs::QueryService) do |h|
           stub(h).list('/') { @hdfs_results }
         end
+
+        set_current_user(current_user)
       end
 
       it "converts hdfs query results into entries" do
@@ -388,10 +391,12 @@ describe HdfsEntry do
   describe "#contents" do
     let(:hdfs_data_source) { hdfs_data_sources(:hadoop) }
     let(:entry) { hdfs_data_source.hdfs_entries.build(:path => "/file.txt") }
+    let(:current_user) { users(:the_collaborator) }
     before do
       any_instance_of(Hdfs::QueryService) do |h|
         stub(h).show('/file.txt') { ["content"] }
       end
+      set_current_user(current_user)
     end
 
     it "retrieves file content from the query service" do
@@ -417,11 +422,13 @@ describe HdfsEntry do
     let(:entry) { hdfs_entries(:hdfs_file) }
     let(:details) { OpenStruct.new(FactoryGirl.attributes_for(:hdfs_entry_statistics)) }
     let(:statistics) { entry.statistics }
+    let(:current_user) { users(:the_collaborator) }
 
     before do
       any_instance_of(Hdfs::QueryService) do |h|
         stub(h).details { details }
       end
+      set_current_user(current_user)
     end
 
     it "retrieve the file statistics" do

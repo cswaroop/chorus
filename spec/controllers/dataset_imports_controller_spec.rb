@@ -105,20 +105,20 @@ describe DatasetImportsController do
         any_instance_of(Import) do |import|
           mock(import).mark_as_canceled!(message)
         end
-
         put :update, params
 
         response.should be_success
       end
 
       it "redirects html requests back to the import console" do
+
         old_config = ChorusConfig.instance.config
         ChorusConfig.instance.config = ChorusConfig.instance.config.dup
-        ChorusConfig.instance.config['ssl_server_port'] = 1234
-        ChorusConfig.instance.config['ssl']['enabled'] = true
-
+        ChorusConfig.instance.config['server_port'] = 1234
         put :update, params.merge(:format => :html)
-        response.should redirect_to ":1234/import_console/imports"
+    
+        #response.should redirect_to ":1234/import_console/imports"
+        response.should redirect_to ":#{ChorusConfig.instance['server_port']}/import_console/imports"
 
         ChorusConfig.instance.config = old_config
       end

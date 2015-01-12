@@ -46,6 +46,14 @@ module Dashboard
       @start_date = @rules[@date_group][:history_fcn].call(@date_parts)
     end
 
+    def access_checker
+      if @access_checker.nil?
+        @access_checker = WorkspacesController.new
+      end
+
+      @access_checker
+    end
+
     def fetch_results
       # Get the top workspace ids since start_date
       top_workspaces = []
@@ -58,6 +66,7 @@ module Dashboard
         .joins(:workspace)
         .group('workspace_id, workspaces.name, workspaces.summary')
         .where('workspace_id IS NOT NULL')
+        .where('workspaces.deleted_at IS NULL')
         .where("#{created_at_adjusted} >= :start_date and #{created_at_adjusted} <= :end_date",
                :start_date => @start_date,
                :end_date => Time.now)
@@ -68,7 +77,8 @@ module Dashboard
           workspace_id: w.workspace_id,
           name: w.name,
           summary: w.summary,
-          event_count: w.event_count
+          event_count: w.event_count,
+          is_accessible: (access_checker.can? :show, Workspace.find(w.workspace_id))
         }
         top_workspace_ids << w.workspace_id
       end

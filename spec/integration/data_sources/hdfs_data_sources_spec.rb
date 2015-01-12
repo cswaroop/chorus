@@ -18,7 +18,7 @@ describe 'Data Sources', :hdfs_integration do
           fill_in 'port', :with => HdfsIntegration.data_source_config['port']
           fill_in 'username', :with => HdfsIntegration.data_source_config['username']
           fill_in 'groupList', :with => HdfsIntegration.data_source_config['group_list']
-          select_item('[name=hdfsVersion]', 'Pivotal HD 2.0')
+          select_item('[name=hdfsVersion]', 'Pivotal HD 2')
         end
         click_button 'Add Data Source'
       end

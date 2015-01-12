@@ -20,8 +20,8 @@
     height: 100%;
 }
 
-/* comfortable spacing at bottom of page EXCEPT for iframe situation */
-#page > div:not(.header_iframe_layout) {
+/* comfortable spacing at bottom of page EXCEPT for special cases */
+#page > div[data-template="logged_in_layout"] {
     margin-bottom: $page-margin-bottom;
 }
 

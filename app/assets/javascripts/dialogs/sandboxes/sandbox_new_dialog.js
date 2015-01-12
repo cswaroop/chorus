@@ -11,7 +11,7 @@ chorus.dialogs.SandboxNew = chorus.dialogs.Base.extend({
     },
 
     subviews: {
-        "form > .data_source_mode": "schemaPicker"
+        ".data_source_mode": "schemaPicker"
     },
 
     setup: function() {

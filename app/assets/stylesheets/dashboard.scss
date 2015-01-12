@@ -1,9 +1,9 @@
 $debug-browser-support: true;
 
+@import "compass/css3/border-radius";
 @import "_browser_support";
 @import "_common";
-@import "components/_button";
-@import "compass/css3/border-radius";
+@import "_button_common";
 
 
 $padding-side-canon: 10px;
@@ -411,6 +411,16 @@ div[data-page="Dashboard"], div[data-page="UserDashboardEdit"] {
         .name_row {
 			padding: $padding-top-canon $padding-side-canon $padding-bottom-canon $padding-side-canon;
 			background-color: $greyish-blue;
+
+            .inactive {
+              @include font-primary-link;
+              color: $disabled-text;
+              line-height: normal;
+              text-overflow: ellipsis;
+              overflow: hidden;
+              white-space: nowrap;
+              display: block;
+            }
 
             a {
                 @include font-primary-link;

@@ -228,6 +228,16 @@ li .activity_content,
                 padding-top: 12px;
             }
         }
+        
+        // special case when the insight is the first item in the list
+        &.insight:first-child {
+            .activity_item {
+                padding-top: 20px;
+            }
+            .insight_ribbon {
+                top: -1px;
+            }
+        }
     }
 }
 
@@ -267,3 +277,6 @@ li .activity_content,
         }
     }
 }
+
+
+

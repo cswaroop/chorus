@@ -58,8 +58,7 @@
 
         label.db_username, input.db_username,
         label[name=databaseName], input[name=databaseName],
-        .username, .group_list, .gnip_username
-        {
+        .username, .group_list, .gnip_username {
             width: $account-width;
         }
 
@@ -70,8 +69,7 @@
 
         label.db_password, input.db_password,
         label[name=schemaName], input[name=schemaName],
-        .group_list, .gnip_password
-        {
+        .group_list, .gnip_password {
             width: $fieldset-width - $account_width - $dialog-padding - 2px;
             margin-left: $input-spacing;
         }

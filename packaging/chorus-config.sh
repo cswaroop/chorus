@@ -127,6 +127,33 @@ function wait_for_stop () {
     echo " ( Stopped )"
 }
 
+DEFAULT_WAIT_TIME=5
+function wait_for_stop_or_force () {
+    pid_file=$1
+
+    MAX_WAIT_TIME=${2:-$DEFAULT_WAIT_TIME} # this awful notation means use parameter $2 if not null, else use value $DEFAULT_WAIT_TIME.
+    time_waited=0
+    while kill -0 `head -1 $pid_file 2>/dev/null` > /dev/null 2>&1
+    do
+        echo -n "."
+        sleep 1
+
+        # Negative values -> indefinite wait
+        if [ "$MAX_WAIT_TIME" -lt "0" ]; then
+            continue
+        fi
+
+        # Else only wait at most MAX_WAIT_TIME
+        let "time_waited++"
+        if [ "$time_waited" -gt "$MAX_WAIT_TIME" ]; then
+            echo " ( Forcing stop since > $MAX_WAIT_TIME sec. elapsed )"
+            kill -9 `head -1 $pid_file 2>/dev/null` > /dev/null 2>&1
+            break
+        fi
+    done
+    echo " ( Stopped )"
+}
+
 function exit_control () {
     # Test for interactive shell
     test -t 0 && stty $SHELL_CONFIG
